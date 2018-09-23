@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
     "install": "cd pogopost && yarn run install",
-    "build": "cd pogopost && yarn run build",
+    "build": "cd pogopost && yarn build",
     "heroku-postbuild": "yarn run build"
   },
   "author": "",
