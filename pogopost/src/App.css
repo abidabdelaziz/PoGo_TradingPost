@@ -1,0 +1,59 @@
+
+.btn-floating{
+    /* margin-right: 50px; */
+    background-color: #1b3764!important;
+    float:right;
+    right: 20vw;
+    vertical-align: middle;
+    top: -20px;
+}
+.nav-wrapper{
+    background-color:red lighten-4;
+}
+
+.carousel{
+    height: 500px!important;
+
+}
+
+.panelOne{
+    background-color: #fafccb!important;
+}
+.btn{
+    text-align: center;
+}
+
+.panelTwo{
+    background-color: #4ab8b8!important;
+}
+.panelThree{
+    background-color: #fafccb!important;
+}
+.panelFour{
+    background-color: #4ab8b8!important;
+}
+.indicator-item{
+    background-color:  #1b3764!important;
+}
+
+
+
+
+li > .circle{
+    object-fit: contain;
+    width:260px!important;
+    height: 140px!important;
+    background-color: #fafccb;
+    border-radius: 500px;
+}
+
+.dropdown-content{
+    border-radius: 20px;
+}
+
+
+
+.collection{
+    height:600px;
+    overflow-y: scroll;
+}
