@@ -12,7 +12,7 @@ const PORT= process.env.PORT || 3001;
 app.use(bodyParser.urlencoded({extended : true}))
 app.use(bodyParser.json())
 
-mongoose.connect("mongodb://localhost/pogopost",{ useNewUrlParser: true })
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/pogopost",{ useNewUrlParser: true })
 // Allows us to serve files out of the pogopost/build
 app.use(express.static("pogopost/build"));
 
