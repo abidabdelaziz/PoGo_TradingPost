@@ -1,72 +1,113 @@
 import React, { Component } from 'react';
-
-import { Collection, CollectionItem, Card, CardTitle} from "react-materialize"
+import PokeCollection from "../Components/PokeCollection"
+import {observer} from "mobx-react"
+import { ProgressBar,Row,Col, Button} from "react-materialize"
 
 
 class PokePost extends Component {
+  
+
+    constructor () {
+        super()
+      
+        this.state = {
+          rcntTrades : [],
+        //   trades:[]
+        }
+       
+      }
+
+       
+    handleRefresh=()=>{
+
+        console.log(this.props.trades.trades)
+        this.setState({rcntTrades:Object.keys(this.props.trades.trades).length})
+        
+        
+        // for(var i=0;i<l;i++){
+            
+        //     const newPoke= [this.props.trades.trades[i]]
+        //     console.log(newPoke[0].cp)
+
+        //     const joined = this.state.trades.concat(newPoke)
+        //     this.setState({trades:joined})
+           
+        // }
+    }
+
+
+    componentDidMount(){
+        
+        console.log("update ui from here pokepost",Object.keys(this.props.trades.trades).length)
+    }
+   
+    
+
     render() {
+       
+        
+        
+
       return (
+
+
           <div>
+           {/* {console.log(Object.keys(this.props.trades.trades).length)} */}
 
-              <Collection>
-                  <CollectionItem s={12}>
-                          <Card horizontal header={<CardTitle image="../Pokemon/pokemon_icon_004_00.png"></CardTitle>} actions={[<a href='#'>Make an Offer</a>]}>
-                          <div>
-                            <p> Charmander</p>
-                            <p> CP: 460 </p>
-                            <p> Quick Move: Tackle</p>
-                            <p> Charge Move: Flamethrower</p>
-                            <p> Gender: Male</p>
-                            <p> Trainer : Bill </p>
-                            <p> Trainer Notes: Hes pretty neat!  </p>
-                        </div>
-                          </Card>
-                  </CollectionItem>
-                  <CollectionItem s={12}>
-                          <Card horizontal header={<CardTitle image="../Pokemon/pokemon_icon_006_00.png"></CardTitle>} actions={[<a href='#'>Make an Offer</a>]}>
-                          <div>
-                            <p> Charizard</p>
-                            <p> CP: 2040 </p>
-                            <p> Quick Move: Wing Attack</p>
-                            <p> Charge Move: Fireblast</p>
-                            <p> Gender: Female</p>
-                            <p> Trainer : Bill </p>
-                            <p> Trainer Notes: Hotter than hell!  </p>
-                        </div>
-                          </Card>
-                  </CollectionItem>
-                  <CollectionItem s={12}>
-                          <Card horizontal header={<CardTitle image="../Pokemon/pokemon_icon_001_00.png"></CardTitle>} actions={[<a href='#'>Make an Offer</a>]}>
-                          <div>
-                            <p> Bulbasaur</p>
-                            <p> CP: 800 </p>
-                            <p> Quick Move: Pound</p>
-                            <p> Charge Move: Razor Leaf</p>
-                            <p> Gender: Female</p>
-                            <p> Trainer : Bill </p>
-                            <p> Trainer Notes: Candy Farming  </p>
-                        </div>
-                          </Card>
-                  </CollectionItem>
-                  <CollectionItem s={12}>
-                          <Card horizontal header={<CardTitle image="../Pokemon/pokemon_icon_008_00.png"></CardTitle>} actions={[<a href='#'>Make an Offer</a>]}>
-                          <div>
-                            <p> Wartortle</p>
-                            <p> CP: 720 </p>
-                            <p> Quick Move: Bubble</p>
-                            <p> Charge Move: Surf</p>
-                            <p> Gender: Male</p>
-                            <p> Trainer : Bill </p>
-                            <p> Trainer Notes: He likes sunglasses. </p>
-                        </div>
-                          </Card>
-                  </CollectionItem>
-                  
-              </Collection>
+          {
+              (this.state.rcntTrades.length===0)  ?
+                 
+              <Row className="pokeRow">
 
-          </div>
+              <Col s={12}>
+              <ProgressBar />
+              </Col>
+              <Row></Row>
+              <Col s={12}>
+                <ProgressBar />
+              </Col>
+              <Row></Row>
+              <Col s={12}>
+                <ProgressBar />
+              </Col>
+              <Row></Row>
+              <Col s={12}>
+                <ProgressBar />
+              </Col>
+           
+              <Button className = 'viewButton' waves='light' onClick={()=>this.handleRefresh()}> View Recent Trades </Button>
+
+              <Row></Row>
+              <Col s={12}>
+                <ProgressBar />
+              </Col>
+              <Row></Row>
+              <Col s={12}>
+                <ProgressBar />
+              </Col>
+              <Row></Row>
+              <Col s={12}>
+                <ProgressBar />
+              </Col>
+              <Row></Row>
+              <Col s={12}>
+                <ProgressBar />
+              </Col>
+              <Row></Row>
+              <Col s={12}>
+                <ProgressBar />
+              </Col>
+            </Row>
+              :
+              
+                <PokeCollection pkmns={this.props.trades.trades} size={this.state.rcntTrades}/>
+      
+                }
+     
+            </div>
+
     );
 }
 }
 
-export default PokePost;
+export default observer(PokePost);

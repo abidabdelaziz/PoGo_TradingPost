@@ -20,6 +20,16 @@ app.use(express.static("pogopost/build"));
 app.get("/", (req, res) =>{
     res.send("hi")
 })
+
+app.get("/pkmn/get", (req,res) => {
+
+    console.log("trying to fetch posts")
+    // Model is how we interact with DB, mongoose queries
+    PogoTrade.find({}).sort({createdAt: -1}).then(results => res.json(results));
+  
+});
+
+
 app.post("/pkmn/post", (req,res)=>{
     console.log(req.body)
 

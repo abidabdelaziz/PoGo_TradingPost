@@ -1,3 +1,7 @@
+.app{
+    position:relative;
+}
+
 
 .btn-floating{
     /* margin-right: 50px; */
@@ -16,6 +20,21 @@
 
 }
 
+.pokePost{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.pokeRow{
+    position:relative
+}
+
+.viewButton{
+    z-index: 2;
+    position:absolute;
+    top:50%; 
+    left:38%;
+}
 .panelOne{
     background-color: #fafccb!important;
 }

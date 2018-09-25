@@ -26,10 +26,11 @@ class PokeCarousel extends Component {
   }
 
     handleForm = (event) =>{
-      console.log(this.state.entry)
-      this.props.tradeList.add(this.state.entry);
+      // console.log(this.state.entry)
+      // this.props.tradeList.add(this.state.entry);
+      // console.log("after form", this.props.tradeList)
       axios.post("/pkmn/post", this.state.entry).then(res =>{
-        console.log("post test",res)
+        // console.log("post test",res)
       })
       this.setState({
         entry: PokeTrade.create({
@@ -44,9 +45,11 @@ class PokeCarousel extends Component {
         })
       })
     }
-
+    componentDidMount(){
+      // console.log("are these props?",this.props.tradeList.trades);
+    }
     render() {
-  
+    // console.log(this.props)
       return (
         <Carousel options={{ fullWidth: true, indicators: true }}>
         
