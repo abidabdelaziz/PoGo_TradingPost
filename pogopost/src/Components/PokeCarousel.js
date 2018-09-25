@@ -57,7 +57,7 @@ class PokeCarousel extends Component {
            
             <PokemonForm pkmn ={this.state.entry}/>
             <Row s={12}>
-              <Button waves='light' onClick={this.handleForm}>Submit</Button>
+              <Button className="submitButton" waves='light' onClick={this.handleForm}>Deposit for Trade!</Button>
             </Row>
 
           </div>

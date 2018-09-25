@@ -52,7 +52,6 @@ class PokemonForm extends Component {
       return (
         <div>
 
-            <h5> Post your Pokemon for Trade! </h5>
            
             
             <Row  s={12}>

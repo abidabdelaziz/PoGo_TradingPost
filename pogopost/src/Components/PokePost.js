@@ -58,7 +58,7 @@ class PokePost extends Component {
               (this.state.rcntTrades.length===0)  ?
                  
               <Row className="pokeRow">
-
+                  {/* <img className="pkmntcImage" src='../pkmntc.jpg'></img> */}
               <Col s={12}>
               <ProgressBar />
               </Col>
@@ -76,7 +76,7 @@ class PokePost extends Component {
               </Col>
            
               <Button className = 'viewButton' waves='light' onClick={()=>this.handleRefresh()}> View Recent Trades </Button>
-
+              <div className="imgDiv"></div>
               <Row></Row>
               <Col s={12}>
                 <ProgressBar />

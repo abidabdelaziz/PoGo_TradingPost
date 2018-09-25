@@ -2,6 +2,10 @@
     position:relative;
 }
 
+.miniMenu{
+    display: inline;
+}
+
 
 .btn-floating{
     /* margin-right: 50px; */
@@ -24,9 +28,15 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  
+  
 }
 .pokeRow{
-    position:relative
+    position: relative;
+    background-image: url(./pkmnbg.png);
+    height:100%;
+    mix-blend-mode: multiply;
+    background-size: contain;
 }
 
 .viewButton{
@@ -37,6 +47,9 @@
 }
 .panelOne{
     background-color: #fafccb!important;
+}
+.submitButton{
+    z-index: 2;
 }
 .btn{
     text-align: center;
