@@ -26,12 +26,15 @@ class PokeCarousel extends Component {
   }
 
     handleForm = (event) =>{
+        // this.setState({tradeTick:this.state.tradeTick + 1})
+        console.log(this.state.tradeTick)
       // console.log(this.state.entry)
       // this.props.tradeList.add(this.state.entry);
       // console.log("after form", this.props.tradeList)
       axios.post("/pkmn/post", this.state.entry).then(res =>{
         // console.log("post test",res)
       })
+      
       this.setState({
         entry: PokeTrade.create({
           "pokemon":"",
@@ -46,16 +49,18 @@ class PokeCarousel extends Component {
       })
     }
     componentDidMount(){
-      // console.log("are these props?",this.props.tradeList.trades);
+       
     }
     render() {
-    // console.log(this.props)
+    
       return (
         <Carousel options={{ fullWidth: true, indicators: true }}>
         
           <div className='panelOne'>
+       
+
            
-            <PokemonForm pkmn ={this.state.entry}/>
+            <PokemonForm pkmn ={this.state.entry} />
             <Row s={12}>
               <Button className="submitButton" waves='light' onClick={this.handleForm}>Deposit for Trade!</Button>
             </Row>

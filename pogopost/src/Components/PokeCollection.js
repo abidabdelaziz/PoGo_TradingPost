@@ -7,10 +7,11 @@ import PokeCard from "../Components/PokeCard"
 class PokeCollection extends Component {
   
 
-    constructor () {
-        super()
+    constructor (props) {
+        super(props)
         this.state={
-            tradenum:[]
+            tradenum:[],
+            size: props.size-1
            
         }
       }
@@ -33,13 +34,14 @@ class PokeCollection extends Component {
        
 
       return (
-                  <Collection>
+                  <Collection className="pokeCollection">
+                  
                   {/* {console.log(this.props.pkmns)} */}
                   {
                       this.state.tradenum.map(function(object, i){
-                          console.log(this.props.pkmns[i])
+                          console.log(this.state.size-i)
 
-                          return <PokeCard pkmns={this.props.pkmns[i]} key={i} />
+                          return <PokeCard pkmns={this.props.pkmns[this.state.size-i]} key={i} />
                        },this)
                       
                       }

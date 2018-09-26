@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PokeCollection from "../Components/PokeCollection"
 import {observer} from "mobx-react"
-import { ProgressBar,Row,Col, Button} from "react-materialize"
+import { ProgressBar,Row,Col, Button, Tabs,Tab} from "react-materialize"
 
 
 class PokePost extends Component {
@@ -52,10 +52,8 @@ class PokePost extends Component {
 
 
           <div>
-           {/* {console.log(Object.keys(this.props.trades.trades).length)} */}
 
-          {
-              (this.state.rcntTrades.length===0)  ?
+          {   (this.state.rcntTrades.length===0)  ?
                  
               <Row className="pokeRow">
                   {/* <img className="pkmntcImage" src='../pkmntc.jpg'></img> */}
@@ -101,9 +99,8 @@ class PokePost extends Component {
               :
               
                 <PokeCollection pkmns={this.props.trades.trades} size={this.state.rcntTrades}/>
-      
-                }
-     
+          }
+           
             </div>
 
     );

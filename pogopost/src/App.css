@@ -1,10 +1,13 @@
+#root{
+    background-image: url(./pkmnbg.png);
+    background-position: 45%;
+}
+
 .app{
     position:relative;
 }
 
-.miniMenu{
-    display: inline;
-}
+
 
 
 .btn-floating{
@@ -24,6 +27,21 @@
 
 }
 
+.pokeCollection{
+    /* height: 418.466px!important;
+    width: 1098.09px!important; */
+    background-color: transparent!important;
+    border-color:transparent !important;
+
+}
+.collection-item{
+    background-color: transparent!important;
+    border-color:transparent !important;
+    
+
+    
+}
+
 .pokePost{
   display: flex;
   align-items: center;
@@ -33,10 +51,7 @@
 }
 .pokeRow{
     position: relative;
-    background-image: url(./pkmnbg.png);
-    height:100%;
-    mix-blend-mode: multiply;
-    background-size: contain;
+    background-size: cover;
 }
 
 .viewButton{
@@ -45,8 +60,10 @@
     top:50%; 
     left:38%;
 }
+
 .panelOne{
     background-color: #fafccb!important;
+    
 }
 .submitButton{
     z-index: 2;

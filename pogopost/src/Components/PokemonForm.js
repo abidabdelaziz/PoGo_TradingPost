@@ -1,21 +1,16 @@
 import React, { Component } from 'react';
 import { Row, Col, Autocomplete, Input } from "react-materialize"
 import {observer} from "mobx-react"
-
+// import PokeTrade from "../models/PokeTrade"
 
 class PokemonForm extends Component {
 
 
-  // handleAutoComplete = (value) =>{
- 
-  //  this.props.pkmn.changePokemon(value)
-   
-   
-  // }
+
   handleAutoChange = (e,value)=>{
-    e.preventDefault()
-    console.log(value)
+     e.preventDefault()
     this.props.pkmn.changePokemon(value)
+  
     
   }
   handleCP =event=>{
@@ -24,7 +19,7 @@ class PokemonForm extends Component {
 
   }
   handleGender = event => {
-  
+    console.log(this.props)
     this.props.pkmn.changeGender(event.target.value);
   }
 
@@ -48,7 +43,9 @@ class PokemonForm extends Component {
    
   }
 
+
     render() {
+    
       return (
         <div>
 
@@ -60,8 +57,8 @@ class PokemonForm extends Component {
                 name ="pkmntrade"
                 className="tradeForm"
                 title='Pokemon'
+                // value={this.state.entry.pokemon}
                 onChange={this.handleAutoChange}
-                // onAutocomplete = {this.handleAutoComplete}
                 limit= {2}
                 data={
                   {
@@ -83,7 +80,7 @@ class PokemonForm extends Component {
                     'Wartortle (Shiny)': '../Pokemon/pokemon_icon_008_00_shiny.png',
                     'Blastoise': '../Pokemon/pokemon_icon_009_00.png',
                     'Blastoise (Shiny)': '../Pokemon/pokemon_icon_009_00_shiny.png',
-                    'Caterpi': '../Pokemon/pokemon_icon_010_00.png',
+                    'Caterpie': '../Pokemon/pokemon_icon_010_00.png',
                     'Metapod': '../Pokemon/pokemon_icon_011_00.png',
                     'Butterfree': '../Pokemon/pokemon_icon_012_00.png',
                     'Weedle': '../Pokemon/pokemon_icon_013_00.png',
@@ -464,18 +461,20 @@ class PokemonForm extends Component {
                }/>
              </Col>
               
-              <Col s={6} >
-                
-              <Input s= {12} label="C.P."  
+              <Col s={6} >     
+              <Input s= {12}  
+              // value={this.state.entry.pokemon} 
+              label="C.P."  
                   onChange = {this.handleCP}
               />
-  
               </Col> 
             </Row>
 
           <Row s={12}>
             <Col  s={6} >
-              <Input s={12} type='select' label="Gender" defaultValue='0'
+              <Input s={12}  
+              // value={this.state.entry.pokemon} 
+              type='select' label="Gender" defaultValue='0'
                 onChange={this.handleGender}>
                 <option value='0'>Select a Gender</option>
                 <option value='Female'>Female</option>
@@ -485,7 +484,9 @@ class PokemonForm extends Component {
             </Col>
 
             <Col  s={6} >
-              <Input s={12} label="Location"
+              <Input s={12}  
+                // value={this.state.entry.pokemon}
+                label="Location"
                 onChange={this.handleLoc}
               />
             </Col>
@@ -493,13 +494,17 @@ class PokemonForm extends Component {
 
           <Row s={12}>
             <Col s={6}>
-              <Input s={12} label="Fast Move"
+              <Input s={12}  
+              // value={this.state.entry.pokemon}
+              label="Fast Move"
               onChange= {this.handleFastM}
               />
             </Col>
 
             <Col  s={6}>
-              <Input s={12} label="Charge Move" 
+              <Input s={12}  
+              // value={this.state.entry.pokemon}
+              label="Charge Move" 
               onChange={this.handleChargeM}
               />
             </Col>
@@ -507,12 +512,16 @@ class PokemonForm extends Component {
           <Row s={12}>
 
           <Col s={6}>
-              <Input s={12} label="Trainer Name"
+              <Input s={12}  
+              // value={this.state.entry.pokemon}
+              label="Trainer Name"
               onChange= {this.handleName}
               />
             </Col>
           <Col s={6}>
-              <Input s={12} label="Trainer Notes"
+              <Input s={12}  
+              // value={this.state.entry.pokemon}
+              label="Trainer Notes"
               onChange= {this.handleNotes}
               />
             </Col>

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {observer} from "mobx-react"
-import { CollectionItem, Card, CardTitle,Row,Col} from "react-materialize"
+import { CollectionItem, Card, CardTitle} from "react-materialize"
 
 
 class PokeCard extends Component {
@@ -28,7 +28,7 @@ class PokeCard extends Component {
             'Wartortle (Shiny)': '../Pokemon/pokemon_icon_008_00_shiny.png',
             'Blastoise': '../Pokemon/pokemon_icon_009_00.png',
             'Blastoise (Shiny)': '../Pokemon/pokemon_icon_009_00_shiny.png',
-            'Caterpi': '../Pokemon/pokemon_icon_010_00.png',
+            'Caterpie': '../Pokemon/pokemon_icon_010_00.png',
             'Metapod': '../Pokemon/pokemon_icon_011_00.png',
             'Butterfree': '../Pokemon/pokemon_icon_012_00.png',
             'Weedle': '../Pokemon/pokemon_icon_013_00.png',
@@ -434,7 +434,7 @@ class PokeCard extends Component {
                           <p> Quick Move: {this.props.pkmns.fastmove}</p>
                           <p> Charge Move: {this.props.pkmns.chargemove}</p>
                           <p> Gender: {this.props.pkmns.gender}</p>
-                          <p> Trainer : {this.props.pkmns.trainer} </p>
+                          <p> Trainer : {this.props.pkmns.trainername} </p>
                           <p> Trainer Notes: {this.props.pkmns.notes}  </p>
                       </div> 
                   </Card> 

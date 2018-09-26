@@ -4,7 +4,7 @@ import Nav from "./Components/Nav"
 import PokeCarousel from "./Components/PokeCarousel"
 import RefFooter from "./Components/RefFooter"
 import PokePost from "./Components/PokePost"
-import { Row,Card,Col} from "react-materialize"
+import { Row } from "react-materialize"
 import {observer} from "mobx-react"
 import axios from "axios"
 import PokeTrade from "./models/PokeTrade"
@@ -77,18 +77,6 @@ componentWillMount(){
         
           <PokePost  className= "pokePost" tradeList ={this.props} trades={this.state} />
         </Row>
-
-        {/* <Row>
-          <Col s={12}>
-            <Card className="miniMenu"  title='Deposit Your Pokemon for Trade Below!' 
-            actions={[<a href='#'>This is a link</a>,
-            <a href='#'>This is a link</a>,
-            <a href='#'>This is a link</a>,
-            <a href='#'>This is a link</a>]}>
-              Thanks!-Bill
-            </Card>
-          </Col>
-        </Row> */}
 
         <Row>
           <PokeCarousel tradeList ={this.props} />
