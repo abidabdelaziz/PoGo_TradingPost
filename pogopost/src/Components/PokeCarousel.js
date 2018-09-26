@@ -12,6 +12,7 @@ class PokeCarousel extends Component {
     super()
   
     this.state = {
+      tradeTick:0,
       entry: PokeTrade.create({
         "pokemon":"",
         "cp": 0,
@@ -26,7 +27,7 @@ class PokeCarousel extends Component {
   }
 
     handleForm = (event) =>{
-        // this.setState({tradeTick:this.state.tradeTick + 1})
+      this.setState({tradeTick:this.state.tradeTick + 1})
         console.log(this.state.tradeTick)
       // console.log(this.state.entry)
       // this.props.tradeList.add(this.state.entry);
@@ -58,9 +59,9 @@ class PokeCarousel extends Component {
         
           <div className='panelOne'>
        
-
+            
            
-            <PokemonForm pkmn ={this.state.entry} />
+            <PokemonForm tradeTick={this.state.tradeTick} pkmn ={this.state.entry} />
             <Row s={12}>
               <Button className="submitButton" waves='light' onClick={this.handleForm}>Deposit for Trade!</Button>
             </Row>

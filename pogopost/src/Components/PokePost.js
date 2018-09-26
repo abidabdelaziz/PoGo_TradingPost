@@ -20,7 +20,7 @@ class PokePost extends Component {
        
     handleRefresh=()=>{
 
-        console.log(this.props.trades.trades)
+        // console.log(this.props.trades.trades)
         this.setState({rcntTrades:Object.keys(this.props.trades.trades).length})
         
         
@@ -38,7 +38,7 @@ class PokePost extends Component {
 
     componentDidMount(){
         
-        console.log("update ui from here pokepost",Object.keys(this.props.trades.trades).length)
+        // console.log("update ui from here pokepost",Object.keys(this.props.trades.trades).length)
     }
    
     

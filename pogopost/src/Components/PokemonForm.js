@@ -1,51 +1,97 @@
 import React, { Component } from 'react';
 import { Row, Col, Autocomplete, Input } from "react-materialize"
 import {observer} from "mobx-react"
-// import PokeTrade from "../models/PokeTrade"
 
 class PokemonForm extends Component {
 
-
+  constructor (props) {
+    super(props)
+  
+    this.state = {
+      tick:0,
+        "pokemon":"",
+        "cp": 0,
+        "gender" : "",
+        "location": "",
+        "fastmove": "",
+        "chargemove": "",
+        "trainername":"",
+        "notes":""
+     
+    }
+  }
+  componentWillReceiveProps(props){
+    console.log("before set state",this.state.tick)
+    this.setState({ tick: props.tradeTick})
+    this.setState({
+      "pokemon":"",
+      "cp": 0,
+      "gender" : "",
+      "location": "",
+      "fastmove": "",
+      "chargemove": "",
+      "trainername":"",
+      "notes":""
+    })
+  }
 
   handleAutoChange = (e,value)=>{
      e.preventDefault()
     this.props.pkmn.changePokemon(value)
-  
+    this.setState({pokemon:value})
+    console.log(this.state.pokemon)
     
   }
   handleCP =event=>{
+    console.log(this.state.pokemon)
+    this.setState({cp:event.target.value})
     const cp = parseInt(event.target.value)
     if(!isNaN(cp)) this.props.pkmn.changeCP(cp)
 
   }
   handleGender = event => {
-    console.log(this.props)
+    this.setState({gender:event.target.value})
+
     this.props.pkmn.changeGender(event.target.value);
   }
 
   handleLoc = event => {
+    this.setState({location:event.target.value})
+
     this.props.pkmn.changeLoc(event.target.value);
   }
 
   handleFastM = event => {
+    this.setState({fastmove:event.target.value})
+
     this.props.pkmn.changeFastM(event.target.value);
   }
 
   handleChargeM = event => {
+    this.setState({chargemove:event.target.value})
+
     this.props.pkmn.changeChargeM(event.target.value);
   }
   handleName= event => {
+    this.setState({trainername:event.target.value})
+
     this.props.pkmn.changeName(event.target.value);
 
   }
   handleNotes = event => {
+    this.setState({notes:event.target.value})
+
     this.props.pkmn.changeNotes(event.target.value);
    
   }
 
+    componentDidMount(){
+    
+    }
 
     render() {
-    
+      console.log("form render",this.state.pokemon)
+
       return (
         <div>
 
@@ -57,7 +103,7 @@ class PokemonForm extends Component {
                 name ="pkmntrade"
                 className="tradeForm"
                 title='Pokemon'
-                // value={this.state.entry.pokemon}
+                value={this.state.pokemon}
                 onChange={this.handleAutoChange}
                 limit= {2}
                 data={
@@ -463,7 +509,7 @@ class PokemonForm extends Component {
               
               <Col s={6} >     
               <Input s= {12}  
-              // value={this.state.entry.pokemon} 
+              value={this.state.cp} 
               label="C.P."  
                   onChange = {this.handleCP}
               />
@@ -473,7 +519,7 @@ class PokemonForm extends Component {
           <Row s={12}>
             <Col  s={6} >
               <Input s={12}  
-              // value={this.state.entry.pokemon} 
+              value={this.state.gender} 
               type='select' label="Gender" defaultValue='0'
                 onChange={this.handleGender}>
                 <option value='0'>Select a Gender</option>
@@ -485,7 +531,7 @@ class PokemonForm extends Component {
 
             <Col  s={6} >
               <Input s={12}  
-                // value={this.state.entry.pokemon}
+                value={this.state.location}
                 label="Location"
                 onChange={this.handleLoc}
               />
@@ -495,7 +541,7 @@ class PokemonForm extends Component {
           <Row s={12}>
             <Col s={6}>
               <Input s={12}  
-              // value={this.state.entry.pokemon}
+              value={this.state.fastmove}
               label="Fast Move"
               onChange= {this.handleFastM}
               />
@@ -503,7 +549,7 @@ class PokemonForm extends Component {
 
             <Col  s={6}>
               <Input s={12}  
-              // value={this.state.entry.pokemon}
+              value={this.state.chargemove}
               label="Charge Move" 
               onChange={this.handleChargeM}
               />
@@ -513,14 +559,14 @@ class PokemonForm extends Component {
 
           <Col s={6}>
               <Input s={12}  
-              // value={this.state.entry.pokemon}
+              value={this.state.trainername}
               label="Trainer Name"
               onChange= {this.handleName}
               />
             </Col>
           <Col s={6}>
               <Input s={12}  
-              // value={this.state.entry.pokemon}
+              value={this.state.notes}
               label="Trainer Notes"
               onChange= {this.handleNotes}
               />
