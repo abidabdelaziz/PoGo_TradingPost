@@ -11,13 +11,17 @@ class PokeCollection extends Component {
         super(props)
         this.state={
             tradenum:[],
-            size: props.size-1
+            size: 0
            
         }
       }
 
       componentWillReceiveProps(props){
-          console.log(props)
+           console.log("props passed at collection",(props))
+           this.setState({size:props.size})
+           const arr= Array.apply(null,{length:props.size}).map(Number.call,Number)
+        // console.log(arr)
+        this.setState({tradenum:arr})
       }
        
     handleRefresh=()=>{
@@ -28,7 +32,7 @@ class PokeCollection extends Component {
         const arr= Array.apply(null,{length:this.props.size}).map(Number.call,Number)
         // console.log(arr)
         this.setState({tradenum:arr})
- console.log(this.props.pkmns[0],this.props.size,"oh hi")
+//  console.log(this.props.pkmns[0],this.props.size,"oh hi")
     }
    
     
@@ -42,9 +46,9 @@ class PokeCollection extends Component {
                   {/* {console.log(this.props.pkmns)} */}
                   {
                       this.state.tradenum.map(function(object, i){
-                          console.log(this.state.size-i)
+                           console.log(this.props.size-i)
 
-                          return <PokeCard pkmns={this.props.pkmns[this.state.size-i]} key={i} />
+                          return <PokeCard pkmns={this.props.pkmns[this.props.size-i-1]} key={i} />
                        },this)
                       
                       }

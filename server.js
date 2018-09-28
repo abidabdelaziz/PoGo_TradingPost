@@ -31,6 +31,19 @@ app.get("/pkmn/get", (req,res) => {
 });
 
 
+app.get("/pkmn/search/:pokemon/:gender", (req,res) => {
+
+    console.log("trying to fetch posts")
+    console.log("req",req.params)
+    PogoTrade.find( { $and: [ { pokemon: { $eq: req.params.pokemon } }, { gender: { $eq: req.params.gender } } ] } ).then(results => res.json(results));
+    
+    
+    
+  
+});
+
+
+
 app.post("/pkmn/post", (req,res)=>{
     console.log(req.body)
 

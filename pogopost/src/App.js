@@ -7,7 +7,7 @@ import PokePost from "./Components/PokePost"
 import { Row,Button,Modal,Col,Autocomplete,Input } from "react-materialize"
 import {observer} from "mobx-react"
 import axios from "axios"
-import PokemonForm from "./Components/PokemonForm"
+
 
 
 
@@ -26,6 +26,7 @@ class App extends Component {
        "trainername":"",
        "notes":"",
        "modalStatus":0,
+       searchPokes:[]
     }
   }
   
@@ -36,86 +37,78 @@ class App extends Component {
 
   refreshPosts(){
     axios.get("/pkmn/get").then( (res)=>{
-        const PokeNew = res.data
-        const l = PokeNew.length
         this.setState({ trades: res.data })
         this.setState({size:res.data.length})     
     })
 }
 
 searchPokemon(){
-  console.log("search hi")
+
+  const stringArr=[this.state.pokemon,
+             this.state.cp,
+             this.state.gender,
+             this.state.location,
+             this.state.fastmove,
+             this.state.chargemov,
+             this.state.trainernam,
+             this.state.notes
+            ]
+
+  //if i want the string o be in  a certain length(params) make and array the loop through it and make sttring
 
 
-
+  this.setState({   
+    "pokemon":"",
+    "cp": 0,
+    "gender" : "",
+    "location": "",
+    "fastmove": "",
+    "chargemove": "",
+    "trainername":"",
+    "notes":"" 
+  });
+  //use stringArr for route below
+  axios.get("/pkmn/search/Vaporeon/Female").then( (res)=>{
+  //  console.log(res.data)   
+   this.setState({ trades: res.data })
+   this.setState({size:res.data.length}) 
+     console.log("after search button click",this.state)
+  
+})
 }
-
-
 
 handleAutoChange = (e,value)=>{
   e.preventDefault()
- 
  this.setState({pokemon:value})
-
- 
 }
 handleCP =event=>{
  this.setState({cp:event.target.value})
-
-
 }
 handleGender = event => {
  this.setState({gender:event.target.value})
-
-
 }
-
 handleLoc = event => {
  this.setState({location:event.target.value})
-
-
 }
-
 handleFastM = event => {
  this.setState({fastmove:event.target.value})
-
-
 }
-
 handleChargeM = event => {
  this.setState({chargemove:event.target.value})
-
- 
 }
 handleName= event => {
  this.setState({trainername:event.target.value})
-
-
-
 }
 handleNotes = event => {
  this.setState({notes:event.target.value})
-
-
-
 }
-
-
-
-
-
-
 
 
 async componentWillMount(){
     this.refreshPosts();
-    // console.log(this.state)
 }
-  // componentDidMount(){console.log('eyooo',this.state,this.props)}
 
   render() {
- 
-  console.log(this.state)
     return (
 
 
@@ -128,16 +121,19 @@ async componentWillMount(){
 
         <Row>
         
-          <PokePost  className= "pokePost" size={this.state.size} tradeList ={this.props} trades={this.state.trades} />
+          <PokePost  className= "pokePost" size={this.state.size}  trades={this.state.trades} />
         </Row>
         <Row>
           <div className="searcharea">
             <Modal
             actions={[
-              <Button waves="light" modal="close" flat>
+              <Button  waves="light" modal="close" flat>
                 Search
               </Button>
             ]}
+            modalOptions={{
+              complete: () => this.searchPokemon()
+            }}
               header='"Search by field"~Bill'
               trigger={<Button className="searchButton" >Search for a Pokemon!</Button>}>
 
@@ -156,23 +152,23 @@ async componentWillMount(){
                       data={
                         {
                           'Bulbasaur': '../Pokemon/pokemon_icon_001_00.png',
-                          'Bulbasaur (Shiny)': '../Pokemon/pokemon_icon_001_00_shiny.png',
+                          'Bulbasaur Shiny': '../Pokemon/pokemon_icon_001_00_shiny.png',
                           'Ivysaur': '../Pokemon/pokemon_icon_002_00.png',
-                          'Ivysaur (Shiny)': '../Pokemon/pokemon_icon_002_00_shiny.png',
+                          'Ivysaur Shiny': '../Pokemon/pokemon_icon_002_00_shiny.png',
                           'Venasaur': '../Pokemon/pokemon_icon_003_00.png',
-                          'Venasaur (Shiny)': '../Pokemon/pokemon_icon_003_00_shiny.png',
+                          'Venasaur Shiny': '../Pokemon/pokemon_icon_003_00_shiny.png',
                           'Charmander': '../Pokemon/pokemon_icon_004_00.png',
-                          'Charmander (Shiny)': '../Pokemon/pokemon_icon_004_00_shiny.png',
+                          'Charmander Shiny': '../Pokemon/pokemon_icon_004_00_shiny.png',
                           "Charmeleon": '../Pokemon/pokemon_icon_005_00.png',
-                          "Charmeleon (Shiny)": '../Pokemon/pokemon_icon_005_00_shiny.png',
+                          "Charmeleon Shiny": '../Pokemon/pokemon_icon_005_00_shiny.png',
                           "Charizard": '../Pokemon/pokemon_icon_006_00.png',
-                          "Charizard (Shiny)": '../Pokemon/pokemon_icon_006_00_shiny.png',
+                          "Charizard Shiny": '../Pokemon/pokemon_icon_006_00_shiny.png',
                           'Squirtle': '../Pokemon/pokemon_icon_007_00.png',
-                          'Squirtle (Shiny)': '../Pokemon/pokemon_icon_007_00_shiny.png',
+                          'Squirtle Shiny': '../Pokemon/pokemon_icon_007_00_shiny.png',
                           'Wartortle': '../Pokemon/pokemon_icon_008_00.png',
-                          'Wartortle (Shiny)': '../Pokemon/pokemon_icon_008_00_shiny.png',
+                          'Wartortle Shiny': '../Pokemon/pokemon_icon_008_00_shiny.png',
                           'Blastoise': '../Pokemon/pokemon_icon_009_00.png',
-                          'Blastoise (Shiny)': '../Pokemon/pokemon_icon_009_00_shiny.png',
+                          'Blastoise Shiny': '../Pokemon/pokemon_icon_009_00_shiny.png',
                           'Caterpie': '../Pokemon/pokemon_icon_010_00.png',
                           'Metapod': '../Pokemon/pokemon_icon_011_00.png',
                           'Butterfree': '../Pokemon/pokemon_icon_012_00.png',

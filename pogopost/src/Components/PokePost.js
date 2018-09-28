@@ -33,7 +33,7 @@ class PokePost extends Component {
 
     componentDidMount(){
         
-     console.log(this.props,this.state)
+  //  console.log("search away",this.state)
    
     }
 
@@ -67,8 +67,7 @@ class PokePost extends Component {
                 <ProgressBar />
               </Col>
            
-              <Button className = 'viewButton' waves='light' onClick={()=>this.handleRefresh()}> View Recent Trades </Button>
-              <div className="imgDiv"></div>
+  
               <Row></Row>
               <Col s={12}>
                 <ProgressBar />

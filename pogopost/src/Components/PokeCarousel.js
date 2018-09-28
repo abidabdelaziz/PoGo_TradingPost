@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Carousel, Row, Button} from "react-materialize"
+import { Row, Button} from "react-materialize"
 import PokemonForm from "../Components/PokemonForm"
 import {observer} from "mobx-react"
 import PokeTrade from "../models/PokeTrade"
@@ -28,9 +28,9 @@ class PokeCarousel extends Component {
 
     handleForm = (event) =>{
       this.setState({tradeTick:this.state.tradeTick + 1})
-        console.log(this.state.tradeTick)
+        // console.log(this.state.tradeTick)
       axios.post("/pkmn/post", this.state.entry).then(res =>{
-        // console.log("post test",res)
+        //  console.log("post test",res)
       })
       
       this.setState({

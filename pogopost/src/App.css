@@ -27,7 +27,7 @@
     opacity:.8;
     height:100px;
     font-family: 'Courier New', Courier, monospace!important;
-    font-size: 70px;
+    font-size: 40px;
     color:white;
     text-align: center;
     vertical-align: 50%;
@@ -196,9 +196,16 @@ li > .circle{
 ::-webkit-scrollbar-thumb {
     background:bisque;
     border-radius: 10px;
+    
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
     background: #ee6e73;
+}
+
+.footer{
+    background-color: #ee6e73;
+    border-radius: 15px;
+    opacity:.85
 }

@@ -11,23 +11,23 @@ class PokeCard extends Component {
         this.state={
           pokePic:{
             'Bulbasaur': '../Pokemon/pokemon_icon_001_00.png',
-            'Bulbasaur (Shiny)': '../Pokemon/pokemon_icon_001_00_shiny.png',
+            'Bulbasaur Shiny': '../Pokemon/pokemon_icon_001_00_shiny.png',
             'Ivysaur': '../Pokemon/pokemon_icon_002_00.png',
-            'Ivysaur (Shiny)': '../Pokemon/pokemon_icon_002_00_shiny.png',
+            'Ivysaur Shiny': '../Pokemon/pokemon_icon_002_00_shiny.png',
             'Venasaur': '../Pokemon/pokemon_icon_003_00.png',
-            'Venasaur (Shiny)': '../Pokemon/pokemon_icon_003_00_shiny.png',
+            'Venasaur Shiny': '../Pokemon/pokemon_icon_003_00_shiny.png',
             'Charmander': '../Pokemon/pokemon_icon_004_00.png',
-            'Charmander (Shiny)': '../Pokemon/pokemon_icon_004_00_shiny.png',
+            'Charmander Shiny': '../Pokemon/pokemon_icon_004_00_shiny.png',
             "Charmeleon": '../Pokemon/pokemon_icon_005_00.png',
-            "Charmeleon (Shiny)": '../Pokemon/pokemon_icon_005_00_shiny.png',
+            "Charmeleon Shiny": '../Pokemon/pokemon_icon_005_00_shiny.png',
             "Charizard": '../Pokemon/pokemon_icon_006_00.png',
-            "Charizard (Shiny)": '../Pokemon/pokemon_icon_006_00_shiny.png',
+            "Charizard Shiny": '../Pokemon/pokemon_icon_006_00_shiny.png',
             'Squirtle': '../Pokemon/pokemon_icon_007_00.png',
-            'Squirtle (Shiny)': '../Pokemon/pokemon_icon_007_00_shiny.png',
+            'Squirtle Shiny': '../Pokemon/pokemon_icon_007_00_shiny.png',
             'Wartortle': '../Pokemon/pokemon_icon_008_00.png',
-            'Wartortle (Shiny)': '../Pokemon/pokemon_icon_008_00_shiny.png',
+            'Wartortle Shiny': '../Pokemon/pokemon_icon_008_00_shiny.png',
             'Blastoise': '../Pokemon/pokemon_icon_009_00.png',
-            'Blastoise (Shiny)': '../Pokemon/pokemon_icon_009_00_shiny.png',
+            'Blastoise Shiny': '../Pokemon/pokemon_icon_009_00_shiny.png',
             'Caterpie': '../Pokemon/pokemon_icon_010_00.png',
             'Metapod': '../Pokemon/pokemon_icon_011_00.png',
             'Butterfree': '../Pokemon/pokemon_icon_012_00.png',
@@ -415,8 +415,7 @@ class PokeCard extends Component {
 
 
     componentDidMount(){
-      ///here we only need the pkmn component
-  console.log(this.props.pkmns.pokemon,"oh hi")
+     console.log("state at pokecard", this.props.pkmns.pokemon)
     }
    
     
@@ -427,7 +426,7 @@ class PokeCard extends Component {
       return (
                   <CollectionItem s={12}>
 
-                    <Card horizontal header={<CardTitle image={this.state.pokePic[this.props.pkmns.pokemon]}></CardTitle>}
+                     <Card horizontal header={<CardTitle image={this.state.pokePic[this.props.pkmns.pokemon]}></CardTitle>}
                       actions={[<a href='#'>Make an Offer</a>]}>
                       <div>
                           <p> {this.props.pkmns.pokemon}</p>
@@ -438,7 +437,7 @@ class PokeCard extends Component {
                           <p> Trainer : {this.props.pkmns.trainername} </p>
                           <p> Trainer Notes: {this.props.pkmns.notes}  </p>
                       </div> 
-                  </Card> 
+                  </Card>  
                   </CollectionItem>
       
 
