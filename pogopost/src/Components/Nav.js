@@ -1,14 +1,12 @@
 import React, { Component } from 'react';
-import { Navbar, NavItem} from "react-materialize"
 
 
 class Nav extends Component {
+    
     render() {
+        
       return (
-          <Navbar brand='PKMN TC : Austin' right>
-              <NavItem onClick={() => console.log('test click')}>Getting started</NavItem>
-              <NavItem href='components.html'>Components</NavItem>
-          </Navbar>
+          <div className="navBar">Pokemon Trading Center</div>
     );
 }
 }

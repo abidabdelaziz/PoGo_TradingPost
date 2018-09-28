@@ -16,6 +16,9 @@ class PokeCollection extends Component {
         }
       }
 
+      componentWillReceiveProps(props){
+          console.log(props)
+      }
        
     handleRefresh=()=>{
     }

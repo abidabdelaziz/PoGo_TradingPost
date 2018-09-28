@@ -415,7 +415,8 @@ class PokeCard extends Component {
 
 
     componentDidMount(){
-  console.log(this.props.pkmns,"oh hi")
+      ///here we only need the pkmn component
+  console.log(this.props.pkmns.pokemon,"oh hi")
     }
    
     

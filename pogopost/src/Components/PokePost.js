@@ -17,31 +17,25 @@ class PokePost extends Component {
        
       }
 
+      componentWillReceiveProps(props){
+        this.setState({rcntTrades:props.trades});
+        
+      }
        
     handleRefresh=()=>{
 
-        // console.log(this.props.trades.trades)
+        
         this.setState({rcntTrades:Object.keys(this.props.trades.trades).length})
-        
-        
-        // for(var i=0;i<l;i++){
-            
-        //     const newPoke= [this.props.trades.trades[i]]
-        //     console.log(newPoke[0].cp)
+       
 
-        //     const joined = this.state.trades.concat(newPoke)
-        //     this.setState({trades:joined})
-           
-        // }
     }
 
 
     componentDidMount(){
         
-        // console.log("update ui from here pokepost",Object.keys(this.props.trades.trades).length)
-    }
+     console.log(this.props,this.state)
    
-    
+    }
 
     render() {
        
@@ -98,7 +92,7 @@ class PokePost extends Component {
             </Row>
               :
               
-                <PokeCollection pkmns={this.props.trades.trades} size={this.state.rcntTrades}/>
+                <PokeCollection pkmns={this.state.rcntTrades} size={this.state.rcntTrades.length}/>
           }
            
             </div>

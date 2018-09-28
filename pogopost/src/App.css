@@ -6,7 +6,10 @@
 .app{
     position:relative;
 }
-
+.container{
+    margin:0 auto;
+    width:90%;
+}
 
 
 
@@ -18,13 +21,38 @@
     vertical-align: middle;
     top: -20px;
 }
-.nav-wrapper{
-    background-color:red lighten-4;
+.navBar{
+    background-color: #ee6e73;
+    border-radius: 15px !important;
+    opacity:.8;
+    height:100px;
+    font-family: 'Courier New', Courier, monospace!important;
+    font-size: 70px;
+    color:white;
+    text-align: center;
+    vertical-align: 50%;
+    font: 40px;
 }
 
-.carousel{
-    height: 500px!important;
+.searcharea{
+    background-color: #ee6e73;
+    border-radius: 15px !important;
+    opacity:.7;
+    width: auto;
+    height: 50px;
+}
 
+
+.formDiv{
+    background-color:#ee6e73;
+    opacity:.7;
+    border-radius:15px !important;
+    color:white
+
+}
+
+label{
+    color:white !important
 }
 
 .pokeCollection{
@@ -37,10 +65,44 @@
 .collection-item{
     background-color: transparent!important;
     border-color:transparent !important;
+    width:400px!important;
+    height:400px!important;
+    
+    float:left
     
 
     
 }
+.card.horizontal{
+    background-color:transparent !important;
+
+
+}
+.card-stacked{
+    background-color:bisque;
+    border-radius:15px !important;
+
+}
+.card-image{
+    background-color:transparent !important;
+}
+
+.searcharea{
+    position: relative;
+}
+.btn.searchButton{
+    position: absolute;
+    top:29%;
+    left: -1%
+    
+   
+}
+
+.card{
+    border-radius:15px !important;
+}
+
+
 
 .pokePost{
   display: flex;
@@ -61,13 +123,24 @@
     left:38%;
 }
 
-.panelOne{
-    background-color: #fafccb!important;
-    
+.modal{
+    background-color: beige !important;
+    color:brown;
+    font:brown;
+    border-radius:15px !important;
+
 }
-.submitButton{
-    z-index: 2;
+.modal-content{
+    background-color:#ee6e73;
+    mix-blend-mode: multiply;
+    opacity:.9
 }
+
+.btn.modal-action{
+    border-radius: 15px;
+    background-color: beige;
+}
+
 .btn{
     text-align: center;
 }
@@ -105,4 +178,27 @@ li > .circle{
 .collection{
     height:600px;
     overflow-y: scroll;
+}
+
+
+/* width */
+::-webkit-scrollbar {
+    width: 20px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey; 
+    border-radius: 10px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background:bisque;
+    border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #ee6e73;
 }

@@ -16,12 +16,16 @@ class PokemonForm extends Component {
         "fastmove": "",
         "chargemove": "",
         "trainername":"",
-        "notes":""
+        "notes":"",
+       
      
     }
   }
   componentWillReceiveProps(props){
-    console.log("before set state",this.state.tick)
+    // console.log("before set state",this.state.tick)
+
+
+
     this.setState({ tick: props.tradeTick})
     this.setState({
       "pokemon":"",
@@ -39,11 +43,10 @@ class PokemonForm extends Component {
      e.preventDefault()
     this.props.pkmn.changePokemon(value)
     this.setState({pokemon:value})
-    console.log(this.state.pokemon)
+  
     
   }
   handleCP =event=>{
-    console.log(this.state.pokemon)
     this.setState({cp:event.target.value})
     const cp = parseInt(event.target.value)
     if(!isNaN(cp)) this.props.pkmn.changeCP(cp)
