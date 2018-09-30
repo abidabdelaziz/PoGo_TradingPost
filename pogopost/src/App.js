@@ -4,9 +4,22 @@ import Nav from "./Components/Nav"
 import PokeCarousel from "./Components/PokeCarousel"
 import RefFooter from "./Components/RefFooter"
 import PokePost from "./Components/PokePost"
-import { Row,Button,Modal,Col,Autocomplete,Input } from "react-materialize"
+import { Row,Button,Modal,Col,Autocomplete,Input,Navbar, NavItem } from "react-materialize"
 import {observer} from "mobx-react"
 import axios from "axios"
+import {Router, Route} from 'react-router-dom'
+//Auth
+import Auth from "./auth/Auth.js"
+import Callback from "./CallBack/Callback"
+import history from './history'
+const auth= new Auth();
+const handleAuthentication = (nextState, replace) => {
+  if (/access_token|id_token|error/.test(nextState.location.hash)) {
+    auth.handleAuthentication();
+  }
+}
+
+
 
 
 
@@ -24,38 +37,41 @@ class App extends Component {
        "fastmove": "",
        "chargemove": "",
        "trainername":"",
-       "notes":"",
        "modalStatus":0,
        searchPokes:[]
     }
   }
   
-  modalOpen(){
-    this.setState({modalStatus:1})
-  }
 
-
-  refreshPosts(){
-    axios.get("/pkmn/get").then( (res)=>{
-        this.setState({ trades: res.data })
-        this.setState({size:res.data.length})     
-    })
+refreshPosts(){
+  axios.get("/pkmn/get").then( (res)=>{
+      this.setState({ trades: res.data })
+      this.setState({size:res.data.length})     
+  })
 }
 
 searchPokemon(){
 
-  const stringArr=[this.state.pokemon,
+  const stringArr=[this.state.pokemon.trim().split(' ').join('0'),
              this.state.cp,
-             this.state.gender,
-             this.state.location,
-             this.state.fastmove,
-             this.state.chargemov,
-             this.state.trainernam,
-             this.state.notes
+             this.state.gender.trim().split(' ').join('0'),
+             this.state.location.trim().split(' ').join('0'),
+             this.state.fastmove.trim().split(' ').join('0'),
+             this.state.chargemove.trim().split(' ').join('0'),
+             this.state.trainername.trim().split(' ').join('0'),
+            
             ]
+  const re=/([/]+)([/])/g
+  let getURL = stringArr.join('/').replace(re, "$1 $2")
+  const l = getURL.length-1
+  if (getURL[l] === '/'){getURL = getURL+'0'}
+  const regex = /^\s+$/g
+  console.log(getURL.replace(regex, 0))
 
   //if i want the string o be in  a certain length(params) make and array the loop through it and make sttring
 
+
+  //    /[\/]/g matches forward slashes.
 
   this.setState({   
     "pokemon":"",
@@ -65,7 +81,7 @@ searchPokemon(){
     "fastmove": "",
     "chargemove": "",
     "trainername":"",
-    "notes":"" 
+ 
   });
   //use stringArr for route below
   axios.get("/pkmn/search/Vaporeon/Female").then( (res)=>{
@@ -99,24 +115,41 @@ handleChargeM = event => {
 handleName= event => {
  this.setState({trainername:event.target.value})
 }
-handleNotes = event => {
- this.setState({notes:event.target.value})
-}
 
 
 async componentWillMount(){
     this.refreshPosts();
+    
 }
 
   render() {
+    console.log(auth.isAuthenticated())
     return (
 
 
      
       <div className="container">
-
+         
         <Row>
-          <Nav />
+        <Router history = {history}>
+            <Navbar brand='Pokemon Go Trading Post' right>
+              
+  
+              {
+                auth.isAuthenticated() ? 
+                <NavItem onClick={() => auth.logout()}> Log Out </NavItem>:
+                <NavItem onClick={() => auth.login()}>  Log In </NavItem>
+              }
+       
+              <Route path="/callback" render={(props) => {
+                  auth.handleAuthentication(props);
+                   return <Callback {...props} /> 
+              }}/>
+
+
+              {/* <Route path="/" render={(props) => <Profile auth={auth} {...props} />} /> */}
+            </Navbar>
+          </Router>
         </Row>
 
         <Row>
@@ -553,7 +586,7 @@ async componentWillMount(){
                   <Col s={6} >
                     <Input s={12}
                       value={this.state.cp}
-                      label="C.P."
+                      label=" Min C.P."
                       onChange={this.handleCP}
                     />
                   </Col>
@@ -607,13 +640,7 @@ async componentWillMount(){
                       onChange={this.handleName}
                     />
                   </Col>
-                  <Col s={6}>
-                    <Input s={12}
-                      value={this.state.notes}
-                      label="Trainer Notes"
-                      onChange={this.handleNotes}
-                    />
-                  </Col>
+                 
 
                 </Row>
 
