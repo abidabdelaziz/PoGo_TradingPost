@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import "./App.css"
-import Nav from "./Components/Nav"
 import PokeCarousel from "./Components/PokeCarousel"
 import RefFooter from "./Components/RefFooter"
 import PokePost from "./Components/PokePost"
+import PokeProfile from "./Components/PokeProfile"
+import PokeChat from "./Components/PokeChat"
 import { Row,Button,Modal,Col,Autocomplete,Input,Navbar, NavItem } from "react-materialize"
 import {observer} from "mobx-react"
 import axios from "axios"
@@ -16,11 +17,9 @@ const auth= new Auth();
 const handleAuthentication = (nextState, replace) => {
   if (/access_token|id_token|error/.test(nextState.location.hash)) {
     auth.handleAuthentication();
+    auth.getProfile()
   }
 }
-
-
-
 
 
 
@@ -32,17 +31,14 @@ class App extends Component {
        size:0,
        "pokemon":"",
        "cp": 0,
-       "gender" : "",
        "location": "",
-       "fastmove": "",
-       "chargemove": "",
        "trainername":"",
-       "modalStatus":0,
-       searchPokes:[]
+       profileStatus:0,
+
     }
+
   }
   
-
 refreshPosts(){
   axios.get("/pkmn/get").then( (res)=>{
       this.setState({ trades: res.data })
@@ -50,48 +46,40 @@ refreshPosts(){
   })
 }
 
-searchPokemon(){
 
-  const stringArr=[this.state.pokemon.trim().split(' ').join('0'),
+
+searchPokemon(){
+  console.log(this.state)
+
+  const stringArr=[this.state.pokemon,
              this.state.cp,
-             this.state.gender.trim().split(' ').join('0'),
-             this.state.location.trim().split(' ').join('0'),
-             this.state.fastmove.trim().split(' ').join('0'),
-             this.state.chargemove.trim().split(' ').join('0'),
-             this.state.trainername.trim().split(' ').join('0'),
+             this.state.location,
+             this.state.trainername,
             
             ]
-  const re=/([/]+)([/])/g
-  let getURL = stringArr.join('/').replace(re, "$1 $2")
-  const l = getURL.length-1
-  if (getURL[l] === '/'){getURL = getURL+'0'}
-  const regex = /^\s+$/g
-  console.log(getURL.replace(regex, 0))
 
-  //if i want the string o be in  a certain length(params) make and array the loop through it and make sttring
-
-
-  //    /[\/]/g matches forward slashes.
+  let getURL = stringArr.join('/')
+  
+   console.log(getURL)
 
   this.setState({   
     "pokemon":"",
     "cp": 0,
-    "gender" : "",
     "location": "",
-    "fastmove": "",
-    "chargemove": "",
     "trainername":"",
  
   });
-  //use stringArr for route below
-  axios.get("/pkmn/search/Vaporeon/Female").then( (res)=>{
-  //  console.log(res.data)   
-   this.setState({ trades: res.data })
-   this.setState({size:res.data.length}) 
-     console.log("after search button click",this.state)
-  
-})
+
+    axios.get(`/pkmn/search/${getURL}`).then( (res)=>{
+      console.log(res.data)   
+      this.setState({ trades: res.data })
+      this.setState({size:res.data.length}) 
+      //  console.log("after search button click",this.state)
+    
+    })
 }
+
+
 
 handleAutoChange = (e,value)=>{
   e.preventDefault()
@@ -100,40 +88,60 @@ handleAutoChange = (e,value)=>{
 handleCP =event=>{
  this.setState({cp:event.target.value})
 }
-handleGender = event => {
- this.setState({gender:event.target.value})
-}
 handleLoc = event => {
  this.setState({location:event.target.value})
-}
-handleFastM = event => {
- this.setState({fastmove:event.target.value})
-}
-handleChargeM = event => {
- this.setState({chargemove:event.target.value})
 }
 handleName= event => {
  this.setState({trainername:event.target.value})
 }
 
-
-async componentWillMount(){
-    this.refreshPosts();
-    
+changePro(){
+  (this.state.profileStatus===0) 
+  ? this.setState({profileStatus: 1})
+  : this.setState({profileStatus: 0})
 }
 
+
+componentWillMount(){
+
+     this.refreshPosts();
+     
+     if (auth.isAuthenticated()===true){
+     this.setState({ profile: {} });
+     const { userProfile, getProfile } = auth;
+     if (!userProfile) {
+       getProfile((err, profile) => {
+         this.setState({ profile });
+       });
+     } else {
+       this.setState({ profile: userProfile });
+     }
+     
+}}
+
+
+
   render() {
-    console.log(auth.isAuthenticated())
+   
     return (
 
-
+       
      
       <div className="container">
-         
+
+
+      {(auth.isAuthenticated()) ? 
+        <div className="postLoad">
         <Row>
         <Router history = {history}>
             <Navbar brand='Pokemon Go Trading Post' right>
-              
+               
+               
+               {(this.state.profileStatus===0)
+               ?<NavItem onClick={() => this.changePro()}
+               >Your Trades</NavItem>
+               : <NavItem onClick={() => this.changePro()}
+               >Home</NavItem>}
   
               {
                 auth.isAuthenticated() ? 
@@ -153,28 +161,11 @@ async componentWillMount(){
         </Row>
 
         <Row>
-        
-          <PokePost  className= "pokePost" size={this.state.size}  trades={this.state.trades} />
-        </Row>
-        <Row>
           <div className="searcharea">
-            <Modal
-            actions={[
-              <Button  waves="light" modal="close" flat>
-                Search
-              </Button>
-            ]}
-            modalOptions={{
-              complete: () => this.searchPokemon()
-            }}
-              header='"Search by field"~Bill'
-              trigger={<Button className="searchButton" >Search for a Pokemon!</Button>}>
-
-              <div>
-
-
+              <Button className="searchButton" onClick={this.searchPokemon.bind(this)}>Search for a Pokemon!</Button>
+              
                 <Row s={12}>
-                  <Col s={6} >
+                  <Col s={3} >
                     <Autocomplete s={12}
                       name="pkmntrade"
                       className="tradeForm"
@@ -583,84 +574,109 @@ async componentWillMount(){
                       } />
                   </Col>
 
-                  <Col s={6} >
+                  <Col s={3} >
                     <Input s={12}
                       value={this.state.cp}
                       label=" Min C.P."
                       onChange={this.handleCP}
                     />
                   </Col>
-                </Row>
-
-                <Row s={12}>
-                  <Col s={6} >
-                    <Input s={12}
-                      value={this.state.gender}
-                      type='select' label="Gender" defaultValue='0'
-                      onChange={this.handleGender}>
-                      <option value='0'>Select a Gender</option>
-                      <option value='Female'>Female</option>
-                      <option value='Male'>Male</option>
-                      <option value='Unknown'>Unknown</option>
-                    </Input>
-                  </Col>
-
-                  <Col s={6} >
+                  <Col s={3} >
                     <Input s={12}
                       value={this.state.location}
                       label="Location"
                       onChange={this.handleLoc}
                     />
                   </Col>
-                </Row>
-
-                <Row s={12}>
-                  <Col s={6}>
-                    <Input s={12}
-                      value={this.state.fastmove}
-                      label="Fast Move"
-                      onChange={this.handleFastM}
-                    />
-                  </Col>
-
-                  <Col s={6}>
-                    <Input s={12}
-                      value={this.state.chargemove}
-                      label="Charge Move"
-                      onChange={this.handleChargeM}
-                    />
-                  </Col>
-                </Row>
-                <Row s={12}>
-
-                  <Col s={6}>
+                  <Col s={3}>
                     <Input s={12}
                       value={this.state.trainername}
                       label="Trainer Name"
                       onChange={this.handleName}
                     />
                   </Col>
-                 
+
+
+
+
+
+
 
                 </Row>
-
-              </div>
-
-
-            </Modal>
-           
           </div>
         </Row>
 
+        
         <Row>
-          <PokeCarousel tradeList ={this.props} />
+
+        <Row>
+          {(this.state.profileStatus===0) ? <PokePost  className= "pokePost" auth={this.state.profile.name} size={this.state.size}  trades={this.state.trades} />
+  
+        :
+        <PokeProfile email={this.state.profile.name} />}
+        </Row>
+
+            <Row className="chatArea">
+          <PokeChat email={this.state.profile.name}/>
+          </Row>
+
+
+
+          <PokeCarousel tradeList ={this.props} auth={this.state.profile.name}/>
         </Row>
 
         <Row>
           <RefFooter />
         </Row>
+        </div>
+
+        : <div className="preLoad">
+          
+          <Row>
+        <Router history = {history}>
+            <Navbar brand='Pokemon Go Trading Post: Austin' right>
+               
+               
+               {(this.state.profileStatus===0)
+               ?<NavItem onClick={() => this.changePro()}
+               >Your Trades</NavItem>
+               : <NavItem onClick={() => this.changePro()}
+               >Home</NavItem>}
+  
+              {
+                auth.isAuthenticated() ? 
+                <NavItem onClick={() => auth.logout()}> Log Out </NavItem>:
+                <NavItem onClick={() => auth.login()}>  Log In </NavItem>
+              }
+       
+              <Route path="/callback" render={(props) => {
+                  auth.handleAuthentication(props);
+                   return <Callback {...props} /> 
+              }}/>
+
+
+              {/* <Route path="/" render={(props) => <Profile auth={auth} {...props} />} /> */}
+            </Navbar>
+          </Router>
+        </Row>
+
+
+        <Row>
+          <RefFooter />
+        </Row>
+          
+          
+          </div> }
+
+
+
 
       </div>
+
+
+
+
+
 
     );
   }
@@ -668,4 +684,3 @@ async componentWillMount(){
 
 export default observer(App);
 
-//Use the actions props in modals to specify other buttons in the modal

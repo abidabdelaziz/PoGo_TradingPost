@@ -12,15 +12,20 @@ class PokePost extends Component {
       
         this.state = {
           rcntTrades : [],
+          
         //   trades:[]
         }
        
       }
 
-      componentWillReceiveProps(props){
-        this.setState({rcntTrades:props.trades});
-        
-      }
+    componentWillReceiveProps(props){
+      // console.log(props)
+      this.setState({rcntTrades:props.trades})
+      this.setState({email: props.auth})
+
+      ;
+    }
+
        
     handleRefresh=()=>{
 
@@ -91,7 +96,9 @@ class PokePost extends Component {
             </Row>
               :
               
-                <PokeCollection pkmns={this.state.rcntTrades} size={this.state.rcntTrades.length}/>
+                <PokeCollection pkmns={this.state.rcntTrades} size={this.state.rcntTrades.length}
+                email={this.state.email}
+                />
           }
            
             </div>

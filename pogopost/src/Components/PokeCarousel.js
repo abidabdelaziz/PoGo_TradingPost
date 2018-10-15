@@ -26,11 +26,29 @@ class PokeCarousel extends Component {
     }
   }
 
+
+  componentWillReceiveProps(props){
+
+  
+  }
+
     handleForm = (event) =>{
       this.setState({tradeTick:this.state.tradeTick + 1})
-        // console.log(this.state.tradeTick)
-      axios.post("/pkmn/post", this.state.entry).then(res =>{
-        //  console.log("post test",res)
+      
+      let tradeObj={ 
+      "pokemon":this.state.entry.pokemon,
+      "cp": this.state.entry.cp,
+      "gender" : this.state.entry.gender,
+      "location": this.state.entry.location,
+      "fastmove": this.state.entry.fastmove,
+      "chargemove": this.state.entry.chargemove,
+      "trainername":this.state.entry.trainername,
+      "notes":this.state.entry.notes,
+      "email":this.props.auth}
+
+      console.log(tradeObj)
+      axios.post("/pkmn/post", tradeObj).then(res =>{
+        
       })
       
       this.setState({
@@ -46,7 +64,10 @@ class PokeCarousel extends Component {
         })
       })
     }
+
+
     componentDidMount(){
+      
        
     }
     render() {

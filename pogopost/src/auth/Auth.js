@@ -8,16 +8,47 @@ export default class Auth {
     clientID: '74ErL1jbXeweuMdQpkh6y44NhdpdcZag',
     redirectUri: origin + '/callback',
     responseType: 'token id_token',
-    scope: 'openid'
+    scope: 'openid profile'
   });
+  userProfile;
 
   constructor() {
     this.login = this.login.bind(this);
     this.logout = this.logout.bind(this);
     this.handleAuthentication = this.handleAuthentication.bind(this);
     this.isAuthenticated = this.isAuthenticated.bind(this);
+    this.getProfile = this.getProfile.bind(this);
+    this.getAccessToken = this.getAccessToken.bind(this);
+    this.userHasScopes = this.userHasScopes.bind(this);
   }
 
+  getAccessToken() {
+    const accessToken = localStorage.getItem('access_token');
+    console.log("accesstoken:",accessToken)
+    if (!accessToken) {
+      throw new Error('No Access Token found');
+    }
+    return accessToken;
+  }
+  
+  
+  userHasScopes(){
+    let _scopes = JSON.parse(localStorage.getItem("scopes"))|| "";
+    const grantedScopes = _scopes.split(' ');
+    console.log("Granted Scopes", grantedScopes)
+    return grantedScopes
+    
+  }
+  getProfile(cb) {
+    let accessToken = this.getAccessToken();
+    console.log("Accesstoken call",accessToken)
+    this.auth0.client.userInfo(accessToken, (err, profile) => {
+      if (profile) {
+        this.userProfile = profile;
+      }
+      cb(err, profile);
+    });
+    }
   handleAuthentication() {
     this.auth0.parseHash((err, authResult) => {
       if (authResult && authResult.accessToken && authResult.idToken) {

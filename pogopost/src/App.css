@@ -1,7 +1,36 @@
 #root{
-    background-image: url(./pkmnbg.png);
-    background-position: 45%;
+    background-image: url(./newpok.jpg);
+    background-size:100%;
+    background-position: 0px 0px;
+        background-repeat: no-repeat;
+  }
+.container{
+    background-image: url(./austin-banner-bg.png);
+    background-repeat: no-repeat;
+    background-position: 0px 1200px;
+
 }
+
+/* html{
+    min-height:1000 !important
+} */
+
+nav{
+    background: -webkit-linear-gradient(-225,rgb(21, 250, 124),rgb(70, 224, 165),rgb(21, 250, 124));
+background: linear-gradient(315deg,rgb(21, 250, 124),rgb(70, 224, 165),rgb(21, 250, 124));
+}
+
+.btn{
+    background-color: saddlebrown;
+}
+
+.preLoad{
+    height:100%;
+}
+.postLoad{
+    height:100%;
+}
+
 
 .app{
     position:relative;
@@ -9,6 +38,7 @@
 .container{
     margin:0 auto;
     width:90%;
+    
 }
 
 
@@ -21,18 +51,10 @@
     vertical-align: middle;
     top: -20px;
 }
-/* .navBar{
-    background-color: #ee6e73;
-    border-radius: 15px !important;
-    opacity:.8;
-    height:100px;
-    font-family: 'Courier New', Courier, monospace!important;
-    font-size: 40px;
-    color:white;
-    text-align: center;
-    vertical-align: 50%;
-    font: 40px;
-} */
+
+
+/* 1. Move the picture down so pokemon are at the bottom
+2. add a div and  give it opacity but not as a a child div,otherwise opacity is inherited */
 
 #nav-mobile{
     background-color:beige;
@@ -40,18 +62,21 @@
 }
 
 .searcharea{
-    background-color: #ee6e73;
-    border-radius: 15px !important;
-    opacity:.7;
+    background: -webkit-linear-gradient(-225,rgb(21, 250, 124),rgb(70, 224, 165),rgb(21, 250, 124));
+    background: linear-gradient(315deg,rgb(21, 250, 124),rgb(70, 224, 165),rgb(21, 250, 124));
+    
+    /* border-radius: 15px !important; */
+    opacity:.90 !important;
     width: auto;
-    height: 50px;
+    height: 100px;
 }
 
 
 .formDiv{
-    background-color:#ee6e73;
-    opacity:.7;
-    border-radius:15px !important;
+    background-color: gainsboro;
+    color:black !important;
+    opacity:.9;
+    /* border-radius:15px !important; */
     color:white
 
 }
@@ -85,7 +110,7 @@ label{
 }
 .card-stacked{
     background-color:bisque;
-    border-radius:15px !important;
+    /* border-radius:15px !important; */
 
 }
 .card-image{
@@ -94,8 +119,17 @@ label{
 
 .searcharea{
     position: relative;
+    opacity: .8;
 }
-.btn.searchButton{
+.searchButton{
+    position: absolute;
+    top:70%;
+    left: -1%
+    
+   
+}
+
+.offerButton{
     position: absolute;
     top:29%;
     left: -1%
@@ -104,7 +138,7 @@ label{
 }
 
 .card{
-    border-radius:15px !important;
+    /* border-radius:15px !important; */
 }
 
 
@@ -113,13 +147,120 @@ label{
   display: flex;
   align-items: center;
   justify-content: center;
-  
+  width: auto
   
 }
 .pokeRow{
     position: relative;
     background-size: cover;
 }
+.pokeProfile{
+    background-color: hsl(32, 45%, 50%);;
+    /* border-radius: 15px !important; */
+    height: 598.005px !important;
+    
+}
+
+.overLay{
+    z-index:500;
+position: absolute;
+background-color: transparent;
+top:0;
+bottom:0;
+left:0;
+right:0;
+
+
+}
+
+.myTrade{
+    background-image: url(./arrow.png);
+    background-size: contain;
+    background-repeat:no-repeat;
+    display:inline-block;
+    overflow: hidden;
+position: relative;
+     
+}
+
+.tradeRow{
+    position: absolute;
+    z-index:-2;
+    
+}
+
+.tradeInfo{
+  
+    background-color: beige ;
+   
+ 
+}
+
+.chatArea{
+    background: -webkit-linear-gradient(-225,rgb(21, 250, 124),rgb(70, 224, 165),rgb(21, 250, 124));
+    background: linear-gradient(315deg,rgb(21, 250, 124),rgb(70, 224, 165),rgb(21, 250, 124));
+    height:200px;
+    width:auto;
+    margin-bottom: 100;
+    position: relative;
+}
+.pokeChat{
+    height:100% !important;
+}
+
+.chatThread{
+    width: 100% !important;
+    height: 50px !important;
+}
+
+
+.messageButton{
+
+    
+
+    margin-left:30px;
+    margin-top:220px;
+    position:absolute;
+    bottom:0;
+    left:0;
+    background-color:hsl(32, 45%, 50%) !important;
+    height:30px;
+    float:right;
+}
+
+.messageText{
+    background-color:beige;
+    position:absolute;
+    box-shadow: grey;
+    width:200px;
+    top:210px;
+    left:95px;
+}
+
+.chatMess{
+    background-color:white;
+}
+
+
+
+.collection{
+    border:none !important;
+}
+
+
+.proPic{
+    max-width:100%;
+max-height:100%;
+-webkit-border-radius: 50%;
+  
+    border-radius: 60%;
+    background-color: beige
+}
+.proHeader{
+    text-align: center;
+    font-size: 40px;
+}
+
 
 .viewButton{
     z-index: 2;
@@ -132,17 +273,17 @@ label{
     background-color: beige !important;
     color:brown;
     font:brown;
-    border-radius:15px !important;
+    /* border-radius:15px !important; */
 
 }
 .modal-content{
-    background-color:#ee6e73;
+    background-color:hsl(32, 45%, 50%);;
     mix-blend-mode: multiply;
     opacity:.9
 }
 
 .btn.modal-action{
-    border-radius: 15px;
+    /* border-radius: 15px; */
     background-color: beige;
 }
 
@@ -171,11 +312,14 @@ li > .circle{
     width:260px!important;
     height: 140px!important;
     background-color: #fafccb;
-    border-radius: 500px;
+    /* border-radius: 500px; */
 }
 
 .dropdown-content{
-    border-radius: 20px;
+    position:absolute;
+    z-index:10000 !important;
+    background-color:transparent;
+  
 }
 
 
@@ -194,23 +338,25 @@ li > .circle{
 /* Track */
 ::-webkit-scrollbar-track {
     box-shadow: inset 0 0 5px grey; 
-    border-radius: 10px;
+    /* border-radius: 10px; */
 }
  
 /* Handle */
 ::-webkit-scrollbar-thumb {
     background:bisque;
-    border-radius: 10px;
+    /* border-radius: 10px; */
     
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-    background: #ee6e73;
+    background: hsl(32, 45%, 50%);;
 }
 
 .footer{
-    background-color: #ee6e73;
-    border-radius: 15px;
-    opacity:.85
+    background: -webkit-linear-gradient(-225,rgb(21, 250, 124),rgb(70, 224, 165),rgb(21, 250, 124));
+    background: linear-gradient(315deg,rgb(21, 250, 124),rgb(70, 224, 165),rgb(21, 250, 124));
+    /* border-radius: 15px; */
+    opacity:1;
+  
 }
