@@ -1,32 +1,50 @@
 #root{
-    background-image: url(./newpok.jpg);
-    background-size:100%;
+    /* background-image: url(./newpok.jpg); */
+
+    background-size: cover;
     background-position: 0px 0px;
         background-repeat: no-repeat;
   }
-.container{
-    background-image: url(./austin-banner-bg.png);
-    background-repeat: no-repeat;
-    background-position: 0px 1200px;
-
-}
 
 /* html{
     min-height:1000 !important
 } */
 
+.parallax-container{
+ 
+    background-color:transparent;
+
+}
+
+.postLoad{
+  position:absolute;
+    top: 0;
+    left: 2%;
+    bottom:0;
+    right:2%;
+    background-color:transparent !important;
+}
+
+
+.parallax > img:first-of-type {
+
+    width:200px !important; 
+    height: auto !important;
+    bottom: -30px;
+}
+
 nav{
-    background: -webkit-linear-gradient(-225,rgb(21, 250, 124),rgb(70, 224, 165),rgb(21, 250, 124));
-background: linear-gradient(315deg,rgb(21, 250, 124),rgb(70, 224, 165),rgb(21, 250, 124));
+    background: -webkit-linear-gradient(-225,rgb(9, 191, 247),rgb(122, 225, 243),rgb(25, 102, 202));
+    background: linear-gradient(315deg,rgb(9, 191, 247),rgb(122, 225, 243),rgb(25, 102, 202, 218));
 }
 
 .btn{
-    background-color: saddlebrown;
+   background-color: #4ab8b8
 }
 
-.preLoad{
+/* .preLoad{
     height:100%;
-}
+} */
 .postLoad{
     height:100%;
 }
@@ -57,13 +75,13 @@ background: linear-gradient(315deg,rgb(21, 250, 124),rgb(70, 224, 165),rgb(21, 2
 2. add a div and  give it opacity but not as a a child div,otherwise opacity is inherited */
 
 #nav-mobile{
-    background-color:beige;
+    background-color:rgb(129, 224, 248);
     opacity: .8;
 }
 
 .searcharea{
-    background: -webkit-linear-gradient(-225,rgb(21, 250, 124),rgb(70, 224, 165),rgb(21, 250, 124));
-    background: linear-gradient(315deg,rgb(21, 250, 124),rgb(70, 224, 165),rgb(21, 250, 124));
+    background: -webkit-linear-gradient(-225,rgb(9, 191, 247),rgb(122, 225, 243),rgb(25, 102, 202));
+    background: linear-gradient(315deg,rgb(9, 191, 247),rgb(122, 225, 243),rgb(25, 102, 202));
     
     /* border-radius: 15px !important; */
     opacity:.90 !important;
@@ -109,7 +127,7 @@ label{
 
 }
 .card-stacked{
-    background-color:bisque;
+    background-color:rgb(174, 239, 255);
     /* border-radius:15px !important; */
 
 }
@@ -121,10 +139,11 @@ label{
     position: relative;
     opacity: .8;
 }
-.searchButton{
-    position: absolute;
-    top:70%;
-    left: -1%
+button.searchButton{
+    position:absolute;
+    right:-2%;
+    top: 65%;
+    
     
    
 }
@@ -155,7 +174,7 @@ label{
     background-size: cover;
 }
 .pokeProfile{
-    background-color: hsl(32, 45%, 50%);;
+    background-color: rgb(174, 239, 255);
     /* border-radius: 15px !important; */
     height: 598.005px !important;
     
@@ -191,27 +210,29 @@ position: relative;
 
 .tradeInfo{
   
-    background-color: beige ;
+    background-color: rgb(174, 239, 255) ;
    
  
 }
 
 .chatArea{
-    background: -webkit-linear-gradient(-225,rgb(21, 250, 124),rgb(70, 224, 165),rgb(21, 250, 124));
-    background: linear-gradient(315deg,rgb(21, 250, 124),rgb(70, 224, 165),rgb(21, 250, 124));
-    height:200px;
+  
+   
     width:auto;
+    padding-top:50px;
     margin-bottom: 100;
     position: relative;
 }
 .pokeChat{
     height:100% !important;
+    display:inline;
 }
 
 .chatThread{
     width: 100% !important;
     height: 50px !important;
 }
+
 
 
 .messageButton{
@@ -223,13 +244,13 @@ position: relative;
     position:absolute;
     bottom:0;
     left:0;
-    background-color:hsl(32, 45%, 50%) !important;
+    background-color:hsl(192, 72%, 60%) !important;
     height:30px;
     float:right;
 }
 
 .messageText{
-    background-color:beige;
+    background-color:rgb(241, 219, 171);
     position:absolute;
     box-shadow: grey;
     width:200px;
@@ -254,7 +275,7 @@ max-height:100%;
 -webkit-border-radius: 50%;
   
     border-radius: 60%;
-    background-color: beige
+    background-color: rgb(174, 239, 255)
 }
 .proHeader{
     text-align: center;
@@ -270,21 +291,21 @@ max-height:100%;
 }
 
 .modal{
-    background-color: beige !important;
-    color:brown;
-    font:brown;
+    background-color: rgb(174, 239, 255) !important;
+    color:rgb(248, 197, 120);
+    font:rgb(142, 209, 248);
     /* border-radius:15px !important; */
 
 }
 .modal-content{
-    background-color:hsl(32, 45%, 50%);;
+    background-color: rgb(174, 239, 255);
     mix-blend-mode: multiply;
     opacity:.9
 }
 
 .btn.modal-action{
     /* border-radius: 15px; */
-    background-color: beige;
+    background-color: rgb(174, 239, 255);
 }
 
 .btn{
@@ -343,19 +364,19 @@ li > .circle{
  
 /* Handle */
 ::-webkit-scrollbar-thumb {
-    background:bisque;
+    background:rgb(248, 158, 47);
     /* border-radius: 10px; */
     
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-    background: hsl(32, 45%, 50%);;
+    background: hsl(182, 66%, 61%);;
 }
 
 .footer{
-    background: -webkit-linear-gradient(-225,rgb(21, 250, 124),rgb(70, 224, 165),rgb(21, 250, 124));
-    background: linear-gradient(315deg,rgb(21, 250, 124),rgb(70, 224, 165),rgb(21, 250, 124));
+    background: -webkit-linear-gradient(-225,rgb(248, 158, 47),rgb(70, 224, 165),rgb(21, 250, 124));
+    background: linear-gradient(315deg,rgb(248, 158, 47),rgb(70, 224, 165),rgb(21, 250, 124));
     /* border-radius: 15px; */
     opacity:1;
   

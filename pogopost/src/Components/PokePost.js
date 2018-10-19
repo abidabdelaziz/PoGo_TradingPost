@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PokeCollection from "../Components/PokeCollection"
 import {observer} from "mobx-react"
-import { ProgressBar,Row,Col, Button, Tabs,Tab} from "react-materialize"
+import { ProgressBar,Row,Col} from "react-materialize"
 
 
 class PokePost extends Component {

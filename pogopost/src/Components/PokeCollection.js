@@ -21,16 +21,15 @@ class PokeCollection extends Component {
            this.setState({email: props.email}) 
            this.setState({size:props.size})
            const arr= Array.apply(null,{length:props.size}).map(Number.call,Number)
-        // console.log(arr)
+
         this.setState({tradenum:arr})
       }
 
-    componentDidMount(){
-        const arr= Array.apply(null,{length:this.props.size}).map(Number.call,Number)
-        // console.log(arr)
-        this.setState({tradenum:arr})
-//  console.log(this.props.pkmns[0],this.props.size,"oh hi")
-    }
+    // componentDidMount(){
+    //     const arr= Array.apply(null,{length:this.props.size}).map(Number.call,Number)
+
+    //     this.setState({tradenum:arr})
+    // }
    
     
 
@@ -40,11 +39,8 @@ class PokeCollection extends Component {
       return (
                   <Collection className="pokeCollection">
                   
-                  {/* {console.log(this.props.pkmns)} */}
                   {
                       this.state.tradenum.map(function(object, i){
-                        //    console.log(this.props.size-i)
-
                           return <PokeCard 
                           email = {this.state.email}
                           pkmns={this.props.pkmns[this.props.size-i-1]} key={i} />

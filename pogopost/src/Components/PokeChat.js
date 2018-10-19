@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { observer } from "mobx-react"
-import { Collection, CollectionItem, Dropdown, Button, Input, NavItem, Row } from "react-materialize"
+import { Collapsible} from "react-materialize"
 import axios from "axios"
-
+import PokeThread from './PokeThread'
 
 class PokeChat extends Component {
 
@@ -15,22 +15,26 @@ class PokeChat extends Component {
 
     }
 
-    componentWillReceiveProps(props) {
-        if (props != undefined) {
-            this.setState({ email: props.email })
-            this.getChats()
-        }
-
-    }
-
     getChats() {
-        axios.get(`/pkmn/getChats/:${this.state.email}`).then((res) => {
+        axios.get(`/pkmn/getChats/:${this.props.email}`).then((res) => {
             this.setState({ talks: res.data })
             this.setState( {size:res.data.length})
+         
         })
     }
 
-    componentDidMount() {
+
+    componentWillMount() {
+      
+        this.getChats()
+        //  this.getChats()
+
+        // const arr= Array.apply(null,{length:this.state.size}).map(Number.call,Number)
+
+        // this.setState({tradenum:arr})
+    }
+    componentDidMount(){
+
 
     }
 
@@ -41,23 +45,20 @@ class PokeChat extends Component {
 
         return (
 
+                <Collapsible>
 
-            <Collection className="pokeChat">
-           
 
-                 {console.log(this.state)}
-                  {/* {
-                      this.state.tradenum.map(function(object, i){
-                        //    console.log(this.props.size-i)
+                    {(this.state.talks ===undefined )? <div>blarg</div>
+                   : 
+                   
+                     this.state.talks.map(function(object, i){
 
-                          return <PokeCard 
-                          email = {this.state.email}
-                          pkmns={this.props.pkmns[this.props.size-i-1]} key={i} />
-                       },this)
-                      
-                      } */}
-                 
-            </Collection>
+                          return <PokeThread convo={object}/>
+
+                        
+                      },this)}
+
+                </Collapsible>
 
 
         );

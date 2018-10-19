@@ -3,7 +3,7 @@ import {observer} from "mobx-react"
 import { Collection,Row, Col, ProgressBar} from "react-materialize"
 import axios from "axios"
 import PokeTrade from './PokeTrade'
-
+import PokeChat from './PokeChat'
 
 class PokeProfile extends Component {
   
@@ -414,7 +414,7 @@ class PokeProfile extends Component {
       }
 
       componentWillReceiveProps(){
-        this.getTrades()
+        // this.getTrades()
 
       }
      
@@ -442,24 +442,26 @@ class PokeProfile extends Component {
 
         {(typeof this.state.activeTrades=== 'object') ?
           <Row>
-          <Collection>
-                  
+            <Collection>
+                    
 
-          { this.state.activeTrades.map(i=>{
+            { this.state.activeTrades.map(i=>{
 
-            /// problem is that i is undefined here
-              {console.log("hi there",i)}
+              /// problem is that i is undefined here
+            
 
-  
-              return <PokeTrade
-              className="pokeTrade"
-                            tradeOne={i.tradeOne}
-                            tradeTwo={i.tradeTwo}
-                             key={i} />
-                         },this)}
-          </Collection>
+    
+                return <PokeTrade
+                className="pokeTrade"
+                              tradeOne={i.tradeOne}
+                              tradeTwo={i.tradeTwo}
+                              key={i} />
+                          },this)}
+            </Collection>
 
-        
+         <Row className="chatArea">
+                  <PokeChat email={this.props.email}/>
+                </Row>
 
           </Row>
           :

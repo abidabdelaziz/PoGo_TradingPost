@@ -1,62 +1,45 @@
 import React, { Component } from 'react';
 import { observer } from "mobx-react"
-import { Collection, CollectionItem, Dropdown, Button, Input, NavItem, Row } from "react-materialize"
-import axios from "axios"
+import {CollapsibleItem, Row } from "react-materialize"
+import PokeMessage from "./PokeMessage"
 
-
-class PokeChat extends Component {
+class PokeThread extends Component {
 
 
     constructor(props) {
         super(props)
         this.state = {
+            talk:[],
 
         }
-
     }
 
     componentWillReceiveProps(props) {
-        if (props != undefined) {
-            console.log(props)
+        
+        this.setState({talk: props.convo.messages})
+          
          
-        }
-
+        
     }
-
-  
 
     componentDidMount() {
 
     }
 
-
-
     render() {
-
 
         return (
 
-
-        
-                <CollectionItem s={12} className="chatThread">Collapsible Chat Thread
-                        <Dropdown trigger={
-                        <div>Drop me!</div>
-                    }>
-                        <Row className="chatMess">
-                            yfuyfuyfuoyfuyf
-                      </Row>
-                        <Row className="chatMess">
-                            yrsydjydyd
-                      </Row>
-                        <Row className="chatMess">
-                            idfgidfs
-                      </Row>
-                    </Dropdown>
-
-                </CollectionItem>
+            <CollapsibleItem 
+            
+            header={`From : ${this.props.convo.fromName} To: ${this.props.convo.toName} 
+            Trade : ${this.props.convo.trade}`}
+            icon='compare_arrows'>
+            <PokeMessage messages= {this.state.talk}/>
+          </CollapsibleItem> 
 
         );
     }
 }
 
-export default observer(PokeChat);
+export default observer(PokeThread);

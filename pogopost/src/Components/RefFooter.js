@@ -5,22 +5,23 @@ import { Footer } from "react-materialize"
 class RefFooter extends Component {
     render() {
       return (
-        <Footer copyrights="Copyright Pending 2018"
+        <Footer copyrights="This is an educational work intended to showcase the MERN Stack, I do not claim any ownership of Pokemn TM content."
         moreLinks={
-          <a className="grey-text text-lighten-4 right" href="#!">More Links</a>
+          <a className="grey-text text-lighten-4 right" href="#!">Hope you enjoy!</a>
         }
         links={
           <ul>
-            <li><a className="grey-text text-lighten-3" href="#!">Link 1</a></li>
-            <li><a className="grey-text text-lighten-3" href="#!">Link 2</a></li>
-            <li><a className="grey-text text-lighten-3" href="#!">Link 3</a></li>
-            <li><a className="grey-text text-lighten-3" href="#!">Link 4</a></li>
+            <li><a className="grey-text text-lighten-3" href="https://www.pokemongo.com/en-us/">Pokemon Go Official Website</a></li>
+            <li><a className="grey-text text-lighten-3" href="https://www.reddit.com/r/pokemongo/">PoGo Reddit</a></li>
+ 
+            <li><a className="grey-text text-lighten-3" href="https://pokemongohub.net/!">Pokemon Go HUB</a></li>
+            <li><a className="grey-text text-lighten-3" href="https://www.serebii.net/">Serebii</a></li>
           </ul>
         }
         className='footer'
       >
-        <h5 className="white-text">Footer Content</h5>
-        <p className="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
+        <h5 className="white-text">Project 1</h5>
+        <p className="grey-text text-lighten-4">This project is a reflection of my knowledge of the MERN Stack upon graduation of the UT Coding Bootcamp. The app showcases usage of asynchronous JS calls through an axios-express pairing and CRUD Mongo operations in a Node React framework. Authentication and Authorization is handled using Auth0.</p>
       </Footer>
           
     );
