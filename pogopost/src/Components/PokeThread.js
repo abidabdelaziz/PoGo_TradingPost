@@ -30,12 +30,14 @@ class PokeThread extends Component {
 
         return (
 
-            <CollapsibleItem 
-            
-            header={`From : ${this.props.convo.fromName} To: ${this.props.convo.toName} 
-            Trade : ${this.props.convo.trade}`}
-            icon='compare_arrows'>
-            <PokeMessage messages= {this.state.talk}/>
+            <CollapsibleItem  
+                header={`From : ${this.props.convo.fromName} To: ${this.props.convo.toName} 
+                Trade : ${this.props.convo.trade}`}
+                icon='compare_arrows'>
+            <PokeMessage 
+                from={this.props.convo.fromName}
+                to={this.props.convo.toName}
+                messages= {this.state.talk}/>
           </CollapsibleItem> 
 
         );

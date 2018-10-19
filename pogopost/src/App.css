@@ -80,8 +80,8 @@ nav{
 }
 
 .searcharea{
-    background: -webkit-linear-gradient(-225,rgb(9, 191, 247),rgb(122, 225, 243),rgb(25, 102, 202));
-    background: linear-gradient(315deg,rgb(9, 191, 247),rgb(122, 225, 243),rgb(25, 102, 202));
+    background: -webkit-linear-gradient(-225,rgb(164, 226, 245),rgb(122, 225, 243),rgb(87, 137, 202));
+    background: linear-gradient(315deg,rgb(164, 226, 245),rgb(122, 225, 243),rgb(87, 137, 202));
     
     /* border-radius: 15px !important; */
     opacity:.90 !important;
@@ -90,8 +90,15 @@ nav{
 }
 
 
+.chatContainer{
+
+    margin-left:50px!important;
+    margin-right:50px!important;
+}
+
+
 .formDiv{
-    background-color: gainsboro;
+    background-color: rgb(186, 239, 243);
     color:black !important;
     opacity:.9;
     /* border-radius:15px !important; */
@@ -108,6 +115,7 @@ label{
     width: 1098.09px!important; */
     background-color: transparent!important;
     border-color:transparent !important;
+    border-radius: 5px;
 
 }
 .collection-item{
@@ -115,7 +123,7 @@ label{
     border-color:transparent !important;
     width:400px!important;
     height:400px!important;
-    
+   
     float:left
     
 
@@ -123,16 +131,23 @@ label{
 }
 .card.horizontal{
     background-color:transparent !important;
-
+    border-radius:10px!important;
 
 }
 .card-stacked{
-    background-color:rgb(174, 239, 255);
+    background-image: url('./pkmnbgstats.jpg');
+    background-size:cover;
+    background-repeat: no-repeat;
+    color: white;
+    
     /* border-radius:15px !important; */
 
 }
 .card-image{
-    background-color:transparent !important;
+    background-image: url('./pkmnbgcatchone.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+ 
 }
 
 .searcharea{
@@ -150,15 +165,12 @@ button.searchButton{
 
 .offerButton{
     position: absolute;
-    top:29%;
-    left: -1%
+    top:-90%;
+    left: 30%
     
    
 }
 
-.card{
-    /* border-radius:15px !important; */
-}
 
 
 
@@ -199,7 +211,21 @@ right:0;
     display:inline-block;
     overflow: hidden;
 position: relative;
+background-color: rgb(228, 250, 255,.6);
+margin-left:20px !important;
+margin-right:20px!important;
+margin-top:20px!important;
+
      
+}
+
+.tradeIm{
+
+    max-width:231px;
+}
+
+.messageText{
+    background-color:rgb(172, 217, 228) !important;
 }
 
 .tradeRow{
@@ -210,7 +236,7 @@ position: relative;
 
 .tradeInfo{
   
-    background-color: rgb(174, 239, 255) ;
+    background-color: rgb(228, 250, 255) ;
    
  
 }
@@ -266,6 +292,9 @@ position: relative;
 
 .collection{
     border:none !important;
+    background-image: url('./newpok.jpg');
+    background-size: cover;
+    background-repeat: no-repeat
 }
 
 
@@ -364,14 +393,14 @@ li > .circle{
  
 /* Handle */
 ::-webkit-scrollbar-thumb {
-    background:rgb(248, 158, 47);
+    background:rgb(236, 195, 145);
     /* border-radius: 10px; */
     
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-    background: hsl(182, 66%, 61%);;
+    background: hsl(182, 36%, 66%);;
 }
 
 .footer{

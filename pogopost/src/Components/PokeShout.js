@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { observer } from "mobx-react"
-import {Row} from "react-materialize"
+import {Row,Col,Icon} from "react-materialize"
 class PokeShout extends Component {
 
 
@@ -15,7 +15,7 @@ class PokeShout extends Component {
 
     componentWillReceiveProps(props) {
         
-            console.log(props)
+            console.log("hei mein",props)
          
         
     }
@@ -37,10 +37,23 @@ class PokeShout extends Component {
 
         return (
             
-            <div> 
-     {`${this.state.date} ${this.state.message}`}
+            <Row> 
+                <Col s={2}>
+                <Icon tiny>person_outline</Icon>
+                {`From: ${this.props.from}`}
+                </Col >
+
+
+               
+                <Col s={2}>
+                <Icon tiny>person</Icon>
+                {`To: ${this.props.to}`}
+                </Col>
+
+                <Col s={8}>{`${this.state.date} ${this.state.message}`}</Col>
+     
                 
-                   </div>
+             </Row>
         );
     }
 }

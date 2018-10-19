@@ -25,8 +25,7 @@ app.get("/pkmn/get", (req,res) => {
     console.log("trying to fetch posts")
     // Model is how we interact with DB, mongoose queries
     PogoTrade.find({}).sort({createdAt: 1}).then(results => res.json(results));
-    
-  
+     
 });
 
 

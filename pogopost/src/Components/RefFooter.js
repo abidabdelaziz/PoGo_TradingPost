@@ -21,7 +21,7 @@ class RefFooter extends Component {
         className='footer'
       >
         <h5 className="white-text">Project 1</h5>
-        <p className="grey-text text-lighten-4">This project is a reflection of my knowledge of the MERN Stack upon graduation of the UT Coding Bootcamp. The app showcases usage of asynchronous JS calls through an axios-express pairing and CRUD Mongo operations in a Node React framework. Authentication and Authorization is handled using Auth0.</p>
+        <p className="grey-text text-lighten-4">This project is a reflection of my knowledge of the MERN Stack. The app showcases usage of asynchronous JS calls through an axios-express pairing and CRUD Mongo operations in a Node React framework. Authentication and Authorization is handled using Auth0.</p>
       </Footer>
           
     );

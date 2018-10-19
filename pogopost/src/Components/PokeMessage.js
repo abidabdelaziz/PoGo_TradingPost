@@ -43,6 +43,8 @@ class PokeMessage extends Component {
                     this.state.shouts.map(function (object, i) {
 
                         return <PokeShout 
+                        from={this.props.from}
+                        to={this.props.to}
                         whisper={this.state.shouts[i]} />
 
 

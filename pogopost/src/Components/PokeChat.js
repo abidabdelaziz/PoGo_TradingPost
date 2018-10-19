@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { observer } from "mobx-react"
-import { Collapsible} from "react-materialize"
+import { Collapsible, Row, CardPanel} from "react-materialize"
 import axios from "axios"
 import PokeThread from './PokeThread'
 
@@ -44,7 +44,13 @@ class PokeChat extends Component {
 
 
         return (
+            <Row className="chatContainer">
 
+<span>
+<CardPanel className="teal lighten-4 black-text">
+            <span>Messages:</span>
+        </CardPanel>
+</span>
                 <Collapsible>
 
 
@@ -60,7 +66,7 @@ class PokeChat extends Component {
 
                 </Collapsible>
 
-
+</Row>
         );
     }
 }
