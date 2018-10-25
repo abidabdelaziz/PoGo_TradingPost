@@ -53,7 +53,7 @@ app.get("/pkmn/userTrades/:email", (req,res) =>{
 
 app.get("/pkmn/getChats/:email", (req,res) => {
 
-    console.log("hello")
+    console.log("hello trying to get from TradeChat collection")
 
 console.log(req.params)
     TradeChat.find({$or :[{'toEmail' : req.params.email.substring(1),},{'fromEmail' : req.params.email.substring(1)} ]}).then(results => res.json(results));
@@ -75,7 +75,7 @@ app.post("/pkmn/post", (req,res)=>{
 
 app.post("/pkmn/offer",(req,res)=>{
 
-
+    console.log("ActiveTrade db req and res at server", req,res)
     ActiveTrade.create(req.body).then(dbPogoTrade =>{
         res.json(dbPogoTrade)
     })
@@ -84,6 +84,7 @@ app.post("/pkmn/offer",(req,res)=>{
 
 app.post("/pkmn/chat",(req,res)=>{
 
+    console.log("TradeChat db req and res at server", req,res)
     TradeChat.updateOne({$and :[{'trade' : req.body.trade,},{'fromEmail' : req.body.fromEmail} ]},
     {$addToSet : { "messages":req.body.messages},
      $set : {"trade" : req.body.trade,

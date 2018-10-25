@@ -17,6 +17,8 @@ class PokeChat extends Component {
 
     getChats() {
         axios.get(`/pkmn/getChats/:${this.props.email}`).then((res) => {
+
+            console.log("@PokeChat: axios response from TradeChat db", res)
             this.setState({ talks: res.data })
             this.setState( {size:res.data.length})
          

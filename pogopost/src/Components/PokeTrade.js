@@ -464,7 +464,7 @@ class PokeTrade extends Component {
 
        
         axios.post("/pkmn/chat", message).then(res =>{
-            console.log(res)
+            console.log("@PokeTrade: axios response ",res)
         
         })
         this.setState({chat:""})
