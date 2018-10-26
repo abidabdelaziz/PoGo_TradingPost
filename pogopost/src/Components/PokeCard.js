@@ -432,7 +432,7 @@ class PokeCard extends Component {
             "chargemove": this.props.pkmns.chargemove,
             "trainername":this.props.pkmns.trainername,
             "notes":this.props.pkmns.notes,
-            "email": this.props.pkmns.email
+            "email": this.props.email
 
         }, 
         tradeTwo:{
