@@ -450,7 +450,7 @@ class PokeCard extends Component {
         }
     }
 
-
+    console.log(trade.tradeOne,trade.tradeTwo)
     axios.post("/pkmn/offer",trade).then(res =>{
        console.log("@PokeCard: pokemon offer response",res)
     })

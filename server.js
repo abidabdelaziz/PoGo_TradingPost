@@ -43,7 +43,7 @@ app.get("/pkmn/search/:pokemon/:cp/:location/:trainername", (req,res) => {
 
 
 app.get("/pkmn/userTrades/:email", (req,res) =>{
-
+console.log("ActiveTrade db get ", req)
     ActiveTrade.find({$or :[{'tradeOne.email' : req.params.email},
     {'tradeTwo.email' : req.params.email} ]}).then(results=>res.json(results))
     
