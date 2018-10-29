@@ -136,7 +136,7 @@ componentWillUpdate
 
  <Row>
               <Router history = {history}>
-                  <Navbar brand='Pokemon Go Trading Post' right>
+                  <Navbar brand='Trading Post: Austin' right>
                     
                     
                     {(this.state.profileStatus===0)
@@ -612,9 +612,9 @@ componentWillUpdate
             </Row>
 
             
-            <Row>
+            <Row >
 
-              <Row>
+              <Row className="topDiv">
                 {(this.state.profileStatus===0) ? 
                   
                 <PokePost  className= "pokePost" auth={this.state.profile.name} size={this.state.size}  trades={this.state.trades} />
@@ -646,7 +646,7 @@ componentWillUpdate
           
           <Row>
               <Router history={history}>
-                <Navbar brand='Pokemon Go Trading Post: Austin' right>
+                <Navbar brand='Trading Post: Austin' right>
 
 
                   {(this.state.profileStatus === 0)

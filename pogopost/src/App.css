@@ -46,6 +46,8 @@ nav{
     height:100%;
 } */
 .postLoad{
+    margin-left:1%;
+    margin-right:1%;
     height:100%;
 }
 
@@ -55,7 +57,8 @@ nav{
 }
 .container{
     margin:0 auto;
-    width:90%;
+    width:80%;
+    
     
 }
 
@@ -83,7 +86,7 @@ nav{
     background: -webkit-linear-gradient(-225,rgb(164, 226, 245),rgb(122, 225, 243),rgb(87, 137, 202));
     background: linear-gradient(315deg,rgb(164, 226, 245),rgb(122, 225, 243),rgb(87, 137, 202));
     
-    /* border-radius: 15px !important; */
+    border-radius: 5px !important;
     opacity:.90 !important;
     width: auto;
     height: 100px;
@@ -96,14 +99,26 @@ nav{
     margin-right:50px!important;
 }
 
+.collapsible-body{
+    background-color: white;
+}
+.collapsible-header{
+    background-color: #4ab8b8;
+}
 
 .formDiv{
-    background-color: rgb(186, 239, 243);
+    background-color: rgb(59, 163, 170);
     color:black !important;
     opacity:.9;
-    /* border-radius:15px !important; */
-    color:white
+    border-radius:5px !important;
+    color:white;
+    padding-top:1px;
 
+}
+
+.formInstr{
+    text-align: center;
+    color:white;
 }
 
 label{
@@ -284,11 +299,24 @@ margin-top:20px!important;
     left:95px;
 }
 
+.topDiv{
+    padding-bottom:0;
+    margin-bottom:0;
+}
+.row.topDiv{
+    margin-bottom:0 !important;
+}
 .chatMess{
     background-color:white;
 }
 
-
+.threadButton{
+    position:relative;
+    top:60px;
+    left:15px;
+    
+    
+}
 
 .collection{
     border:none !important;
@@ -321,13 +349,13 @@ max-height:100%;
 
 .modal{
     background-color: rgb(174, 239, 255) !important;
-    color:rgb(248, 197, 120);
+    color:rgb(255, 255, 255);
     font:rgb(142, 209, 248);
     /* border-radius:15px !important; */
 
 }
 .modal-content{
-    background-color: rgb(174, 239, 255);
+    background-color: rgb(76, 184, 211);
     mix-blend-mode: multiply;
     opacity:.9
 }

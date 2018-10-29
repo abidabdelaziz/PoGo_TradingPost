@@ -521,7 +521,7 @@ class PokeCard extends Component {
                       modalOptions={{
                           complete: () => this.makeOffer()
                       }}
-                      header='"Offer that Pokemon"~Bill'
+                      header='Complete the form to offer your Pokemon!'
                       trigger={<Button className="offerButton" >Offer!</Button>}>
                       <div>
                           <Row s={12}>
@@ -1014,14 +1014,14 @@ class PokeCard extends Component {
 
                       ]}>
                       <div>
-                          <p> {this.props.pkmns.pokemon}</p>
-                          <p> CP: {this.props.pkmns.cp} </p>
-                          <p> Quick Move: {this.props.pkmns.fastmove}</p>
-                          <p> Location: {this.props.pkmns.location}</p>
-                          <p> Charge Move: {this.props.pkmns.chargemove}</p>
-                          <p> Gender: {this.props.pkmns.gender}</p>
-                          <p> Trainer : {this.props.pkmns.trainername} </p>
-                          <p> Trainer Notes: {this.props.pkmns.notes}  </p>
+                           <h5><font color="purple">{this.props.pkmns.pokemon}</font></h5>
+                          <p> <font color="purple">CP:</font> {this.props.pkmns.cp} </p>
+                          <p> <font color="purple">Quick Move: </font>{this.props.pkmns.fastmove}</p>
+                          <p> <font color="purple">Location: </font>{this.props.pkmns.location}</p>
+                          <p> <font color="purple">Charge Move: </font>{this.props.pkmns.chargemove}</p>
+                          <p> <font color="purple">Gender: </font>{this.props.pkmns.gender}</p>
+                          <p> <font color="purple">Trainer : </font>{this.props.pkmns.trainername} </p>
+                          <p> <font color="purple">Trainer Notes:</font> {this.props.pkmns.notes}  </p>
                       </div> 
                   </Card>  
                   </CollectionItem>

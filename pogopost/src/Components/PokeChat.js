@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { observer } from "mobx-react"
-import { Collapsible, Row, CardPanel} from "react-materialize"
+import { Collapsible, Row, CardPanel,Col} from "react-materialize"
 import axios from "axios"
 import PokeThread from './PokeThread'
 
@@ -48,27 +48,24 @@ class PokeChat extends Component {
         return (
             <Row className="chatContainer">
 
-<span>
-<CardPanel className="teal lighten-4 black-text">
-            <span>Messages:</span>
-        </CardPanel>
-</span>
-                <Collapsible>
+                <Col s={12}>
+                    <CardPanel className="teal lighten-4 black-text">
+                        <span><h4><font color="white">Messages:</font></h4></span>
+                        <Collapsible>
 
+                            {(this.state.talks === undefined) ? <div>blarg</div>
+                                :
 
-                    {(this.state.talks ===undefined )? <div>blarg</div>
-                   : 
-                   
-                     this.state.talks.map(function(object, i){
+                                this.state.talks.map(function (object, i) {
 
-                          return <PokeThread convo={object}/>
+                                    return <PokeThread convo={object} />
+                                }, this)}
 
-                        
-                      },this)}
+                        </Collapsible>
 
-                </Collapsible>
-
-</Row>
+                    </CardPanel>
+                </Col>
+            </Row>
         );
     }
 }

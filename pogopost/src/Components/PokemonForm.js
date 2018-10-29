@@ -97,7 +97,10 @@ class PokemonForm extends Component {
 
       return (
         <div>
+            <Row s={12}>
+              <h4 className = "formInstr"> Fill the form below to put a Pokemon up for trade!</h4>
 
+            </Row>
            
             
             <Row  s={12}>
